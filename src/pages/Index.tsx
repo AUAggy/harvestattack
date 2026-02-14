@@ -8,8 +8,16 @@ import StorageVault from '@/components/simulator/StorageVault';
 import ScenarioPresets, { Scenario } from '@/components/simulator/ScenarioPresets';
 import InfoModal from '@/components/simulator/InfoModal';
 import GuidedTour from '@/components/simulator/GuidedTour';
-import { EncryptionType } from '@/lib/simulation-data';
-import { Info, Zap, HelpCircle, BookOpen } from 'lucide-react';
+import MythBusters from '@/components/simulator/MythBusters';
+import WhosMigrating from '@/components/simulator/WhosMigrating';
+import CostOfWaiting from '@/components/simulator/CostOfWaiting';
+import SelfAssessment from '@/components/simulator/SelfAssessment';
+import ActionToolkit from '@/components/simulator/ActionToolkit';
+import ShareExport from '@/components/simulator/ShareExport';
+import { EncryptionType, encryptionTypes } from '@/lib/simulation-data';
+import { Zap, HelpCircle, BookOpen } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const [encryptionType, setEncryptionType] = useState<EncryptionType>('RSA_2048');
@@ -172,49 +180,155 @@ const Index = () => {
           messagesIntercepted={messagesIntercepted}
         />
 
-        {/* Educational callout */}
+        {/* Cryptocurrency Context */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="bg-surface-2/50 border border-border rounded-2xl p-6 text-center"
+          transition={{ delay: 0.45 }}
+          className="bg-yellow-500/10 border-l-4 border-yellow-500 rounded-lg p-6"
         >
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Info className="w-5 h-5 text-primary" />
-            <span className="font-semibold text-foreground">Why does this matter?</span>
+          <div className="flex items-start gap-3">
+            <span className="text-3xl flex-shrink-0">₿</span>
+            <div className="flex-1">
+              <h3 className="font-bold text-foreground mb-2">
+                The $2.4 Trillion Question: Digital Signatures
+              </h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Bitcoin and most cryptocurrencies use <strong className="text-foreground">ECDSA signatures</strong> that quantum
+                computers will break. Unlike this simulator's focus on encrypted <em>traffic</em>,
+                cryptocurrency faces a different threat: <strong className="text-foreground">signature forgery</strong>.
+              </p>
+              <p className="text-sm text-muted-foreground mb-3">
+                Every Bitcoin transaction is permanently public on the blockchain. When quantum computers
+                arrive, addresses that have revealed their public key become vulnerable to theft.
+                You can't "rotate" blockchain history.
+              </p>
+              <div className="bg-surface-1 rounded p-3 border border-border">
+                <p className="text-xs text-muted-foreground">
+                  <strong className="text-foreground">Why this matters to you:</strong> Your organization
+                  likely uses ECDSA signatures for code signing, SSH keys, API authentication, and TLS
+                  certificates. Same vulnerability. If quantum breaks Bitcoin, it breaks those too.
+                </p>
+              </div>
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Adversaries are recording encrypted traffic <strong className="text-foreground">right now</strong>,
-            betting that quantum computers will eventually break the encryption. This is
-            <strong className="text-foreground"> "Harvest Now, Decrypt Later"</strong>.
-            Data with long-term value (medical records, state secrets, financial data) needs
-            quantum-resistant encryption <strong className="text-foreground">today</strong>, not when quantum computers arrive.
+        </motion.div>
+
+        {/* Clear Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+          className="bg-gradient-to-r from-destructive/20 to-primary/20 border-2 border-primary rounded-2xl p-8 text-center"
+        >
+          <h2 className="text-2xl font-bold text-foreground mb-3">
+            {messagesIntercepted > 0
+              ? `${messagesIntercepted.toLocaleString()} Message${messagesIntercepted !== 1 ? 's' : ''} Already Harvested`
+              : 'Your Data Is Being Harvested Right Now'}
+          </h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            {year >= (encryptionTypes[encryptionType].brokenAt || 9999)
+              ? `${encryptionTypes[encryptionType].shortName} is broken. Every message harvested since 2026 is now decryptable.`
+              : 'Adversaries are recording encrypted traffic today to decrypt later. What should you do?'}
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mt-4">
-            <button
-              onClick={() => setInfoOpen(true)}
-              className="text-xs text-primary hover:underline"
-            >
-              Learn More About This Threat →
-            </button>
+          <Button
+            size="lg"
+            onClick={() => {
+              document.getElementById('readiness-guide')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="text-lg px-8 py-6"
+          >
+            Get Your Readiness Assessment →
+          </Button>
+        </motion.div>
+
+        {/* Complete PQC Readiness Guide */}
+        <motion.div
+          id="readiness-guide"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="bg-surface-2/30 rounded-2xl border border-border p-6"
+        >
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold text-foreground mb-2">Complete PQC Readiness Guide</h2>
+            <p className="text-sm text-muted-foreground">
+              Learn, assess, and take action on quantum-safe cryptography
+            </p>
+          </div>
+
+          <Tabs defaultValue="learn" className="w-full">
+            <TabsList className="grid w-full grid-cols-4 mb-6">
+              <TabsTrigger value="learn">Learn</TabsTrigger>
+              <TabsTrigger value="assess">Assess</TabsTrigger>
+              <TabsTrigger value="act">Act</TabsTrigger>
+              <TabsTrigger value="share">Share</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="learn" className="space-y-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <MythBusters />
+                <WhosMigrating />
+              </div>
+              <CostOfWaiting currentYear={year} />
+            </TabsContent>
+
+            <TabsContent value="assess" className="space-y-6">
+              <SelfAssessment />
+            </TabsContent>
+
+            <TabsContent value="act" className="space-y-6">
+              <ActionToolkit />
+            </TabsContent>
+
+            <TabsContent value="share" className="space-y-6">
+              <ShareExport
+                encryptionType={encryptionType}
+                year={year}
+                messagesIntercepted={messagesIntercepted}
+              />
+            </TabsContent>
+          </Tabs>
+        </motion.div>
+
+        {/* Footer with resources */}
+        <footer className="mt-12 pt-6 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground mb-3">
+            Learn more about post-quantum cryptography
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-xs">
             <a
               href="https://www.nist.gov/pqcrypto"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-primary hover:underline"
+              className="text-primary hover:underline"
             >
-              NIST PQ Standards →
+              NIST PQC Standards
             </a>
             <a
               href="https://www.cisa.gov/quantum"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-primary hover:underline"
+              className="text-primary hover:underline"
             >
-              CISA Quantum Guidance →
+              CISA Guidance
             </a>
+            <a
+              href="https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS_.PDF"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              NSA CNSA 2.0
+            </a>
+            <button
+              onClick={() => setInfoOpen(true)}
+              className="text-primary hover:underline"
+            >
+              About This Tool
+            </button>
           </div>
-        </motion.div>
+        </footer>
       </main>
     </div>
   );
