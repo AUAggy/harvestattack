@@ -5,14 +5,22 @@ import SimulationCanvas from '@/components/simulator/SimulationCanvas';
 import TimeSlider from '@/components/simulator/TimeSlider';
 import StatusDashboard from '@/components/simulator/StatusDashboard';
 import StorageVault from '@/components/simulator/StorageVault';
-import { EncryptionType, getQubitCount } from '@/lib/simulation-data';
-import { Info, Zap } from 'lucide-react';
+import ScenarioPresets, { Scenario } from '@/components/simulator/ScenarioPresets';
+import InfoModal from '@/components/simulator/InfoModal';
+import GuidedTour from '@/components/simulator/GuidedTour';
+import { EncryptionType } from '@/lib/simulation-data';
+import { Info, Zap, HelpCircle, BookOpen } from 'lucide-react';
 
 const Index = () => {
   const [encryptionType, setEncryptionType] = useState<EncryptionType>('RSA_2048');
   const [year, setYear] = useState(2026);
   const [isPlaying, setIsPlaying] = useState(false);
   const [messagesIntercepted, setMessagesIntercepted] = useState(0);
+  const [activeScenario, setActiveScenario] = useState<string | null>(null);
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [showTour, setShowTour] = useState(() => {
+    return !localStorage.getItem('harvest-tour-completed');
+  });
 
   const handleMessageIntercepted = useCallback(() => {
     setMessagesIntercepted((prev) => prev + 1);
@@ -23,12 +31,30 @@ const Index = () => {
     setYear(2026);
     setMessagesIntercepted(0);
     setIsPlaying(false);
+    setActiveScenario(null);
   };
 
   const handleReset = () => {
     setYear(2026);
     setMessagesIntercepted(0);
     setIsPlaying(false);
+  };
+
+  const handleScenario = (scenario: Scenario) => {
+    if (scenario.id === 'custom') {
+      setActiveScenario('custom');
+      return;
+    }
+    setActiveScenario(scenario.id);
+    setEncryptionType(scenario.encryptionType);
+    setMessagesIntercepted(0);
+    if (scenario.autoPlay) {
+      setYear(2026);
+      setIsPlaying(true);
+    } else {
+      setYear(scenario.targetYear);
+      setIsPlaying(false);
+    }
   };
 
   // Auto-play
@@ -48,6 +74,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Guided Tour */}
+      {showTour && <GuidedTour onComplete={() => setShowTour(false)} />}
+
+      {/* Info Modal */}
+      <InfoModal open={infoOpen} onOpenChange={setInfoOpen} />
+
       {/* Header */}
       <header className="border-b border-border bg-surface-0/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
@@ -65,18 +97,43 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setInfoOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-2 border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-surface-3 transition-colors"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Learn More</span>
+              </button>
+              <button
+                onClick={() => setShowTour(true)}
+                className="p-2 rounded-lg bg-surface-2 border border-border text-muted-foreground hover:text-foreground hover:bg-surface-3 transition-colors"
+                title="Restart guided tour"
+              >
+                <HelpCircle className="w-4 h-4" />
+              </button>
               <div className="font-mono text-3xl font-bold text-foreground">{year}</div>
             </div>
           </div>
-          <EncryptionSelector selected={encryptionType} onChange={handleEncryptionChange} />
+          <div data-tour="encryption-selector">
+            <EncryptionSelector selected={encryptionType} onChange={handleEncryptionChange} />
+          </div>
         </div>
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-6">
+        {/* Scenario Presets */}
+        <div className="bg-surface-2/30 rounded-2xl border border-border p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-sm font-semibold text-foreground">🎬 Scenarios</span>
+            <span className="text-xs text-muted-foreground">— Pick a preset or go custom</span>
+          </div>
+          <ScenarioPresets activeScenario={activeScenario} onSelectScenario={handleScenario} />
+        </div>
+
         {/* Simulation Canvas */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2" data-tour="simulation-canvas">
             <SimulationCanvas
               encryptionType={encryptionType}
               year={year}
@@ -84,7 +141,7 @@ const Index = () => {
               onMessageIntercepted={handleMessageIntercepted}
             />
           </div>
-          <div>
+          <div data-tour="storage-vault">
             <StorageVault
               encryptionType={encryptionType}
               year={year}
@@ -94,7 +151,7 @@ const Index = () => {
         </div>
 
         {/* Time Slider */}
-        <div className="bg-surface-2/30 rounded-2xl border border-border p-4 sm:p-6">
+        <div className="bg-surface-2/30 rounded-2xl border border-border p-4 sm:p-6" data-tour="time-slider">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-sm font-semibold text-foreground">⏱️ Time Machine</span>
             <span className="text-xs text-muted-foreground">— Drag to travel through time</span>
@@ -106,27 +163,6 @@ const Index = () => {
             onPlayToggle={() => setIsPlaying((p) => !p)}
             onReset={handleReset}
           />
-        </div>
-
-        {/* Quick jump buttons */}
-        <div className="flex flex-wrap gap-2 justify-center">
-          {[
-            { label: '🎯 RSA Breaks (2035)', year: 2035, enc: 'RSA_2048' as EncryptionType },
-            { label: '🎯 X25519 Breaks (2042)', year: 2042, enc: 'X25519' as EncryptionType },
-            { label: '🛡️ ML-KEM at 2050', year: 2050, enc: 'MLKEM768_HYBRID' as EncryptionType },
-          ].map((preset) => (
-            <button
-              key={preset.label}
-              onClick={() => {
-                setEncryptionType(preset.enc);
-                setYear(preset.year);
-                setMessagesIntercepted(Math.floor(Math.random() * 50) + 30);
-              }}
-              className="px-3 py-1.5 rounded-lg bg-surface-2 border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-surface-3 transition-colors"
-            >
-              {preset.label}
-            </button>
-          ))}
         </div>
 
         {/* Status Dashboard */}
@@ -155,6 +191,12 @@ const Index = () => {
             quantum-resistant encryption <strong className="text-foreground">today</strong>, not when quantum computers arrive.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-4">
+            <button
+              onClick={() => setInfoOpen(true)}
+              className="text-xs text-primary hover:underline"
+            >
+              Learn More About This Threat →
+            </button>
             <a
               href="https://www.nist.gov/pqcrypto"
               target="_blank"
