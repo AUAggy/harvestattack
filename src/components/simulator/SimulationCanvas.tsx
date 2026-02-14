@@ -42,7 +42,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
       };
       setPackets((prev) => [...prev.slice(-8), newPacket]);
       onMessageIntercepted();
-    }, 1500 + Math.random() * 1500);
+    }, 3000 + Math.random() * 3000);
 
     return () => clearInterval(interval);
   }, [onMessageIntercepted]);
@@ -52,7 +52,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
     const frame = setInterval(() => {
       setPackets((prev) =>
         prev
-          .map((p) => ({ ...p, progress: p.progress + 0.02 }))
+          .map((p) => ({ ...p, progress: p.progress + 0.008 }))
           .filter((p) => p.progress <= 1.2)
       );
     }, 33);
@@ -156,7 +156,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
             </div>
           </TooltipTrigger>
           <TooltipContent className="bg-surface-2 border-border text-foreground max-w-xs">
-            This represents any entity recording encrypted internet traffic today — governments, hackers, or corporations.
+            This represents any entity recording encrypted internet traffic today: governments, hackers, or corporations.
           </TooltipContent>
         </Tooltip>
       </div>
@@ -193,7 +193,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
         >
           {status === 'secure' && '🔒 Traffic encrypted & secure'}
           {status === 'vulnerable' && '⚠️ Encryption becoming vulnerable'}
-          {status === 'broken' && '🔓 ENCRYPTION BROKEN — All data exposed!'}
+          {status === 'broken' && '🔓 ENCRYPTION BROKEN - All data exposed'}
         </motion.div>
       </div>
     </div>

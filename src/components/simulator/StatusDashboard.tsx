@@ -47,7 +47,7 @@ export default function StatusDashboard({ year, encryptionType, messagesIntercep
       icon: <Clock className="w-4 h-4 text-muted-foreground" />,
       label: 'Time to Break',
       value: timeUntilVulnerable === null ? '∞' : timeUntilVulnerable === 0 ? 'NOW' : `${timeUntilVulnerable}yr`,
-      sub: timeUntilVulnerable === null ? 'Indefinitely secure' : timeUntilVulnerable === 0 ? 'Vulnerable now!' : 'Until vulnerable',
+      sub: timeUntilVulnerable === null ? 'Indefinitely secure' : timeUntilVulnerable === 0 ? 'Vulnerable now' : 'Until vulnerable',
     },
   ];
 

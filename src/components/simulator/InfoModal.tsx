@@ -54,13 +54,13 @@ export default function InfoModal({ open, onOpenChange }: InfoModalProps) {
             <>
               <Section title="What is 'Harvest Now, Decrypt Later'?">
                 <p>
-                  Adversaries — nation-states, criminal organizations, and other threat actors — are 
-                  <strong className="text-foreground"> recording encrypted internet traffic today</strong>. 
-                  They can't read it yet, but they're storing it, betting that future quantum computers 
+                  Adversaries (nation-states, criminal organizations, and other threat actors) are
+                  <strong className="text-foreground"> recording encrypted internet traffic today</strong>.
+                  They can't read it yet, but they're storing it, betting that future quantum computers
                   will be able to break the encryption.
                 </p>
                 <p className="mt-2">
-                  This is called <strong className="text-foreground">"Harvest Now, Decrypt Later" (HNDL)</strong> — 
+                  This is called <strong className="text-foreground">"Harvest Now, Decrypt Later" (HNDL)</strong>,
                   also known as "Store Now, Decrypt Later" or retrospective decryption.
                 </p>
               </Section>
@@ -85,14 +85,14 @@ export default function InfoModal({ open, onOpenChange }: InfoModalProps) {
             <>
               <Section title="How Quantum Computers Break Encryption">
                 <p>
-                  Classical encryption like RSA and elliptic curve (X25519) relies on mathematical problems 
-                  that are extremely hard for classical computers — factoring large numbers and computing 
+                  Classical encryption like RSA and elliptic curve (X25519) relies on mathematical problems
+                  that are hard for classical computers: factoring large numbers and computing
                   discrete logarithms.
                 </p>
                 <p className="mt-2">
-                  <strong className="text-foreground">Shor's Algorithm</strong>, running on a sufficiently 
-                  powerful quantum computer, can solve these problems exponentially faster than any classical 
-                  algorithm. This means RSA-2048 and X25519 will eventually become trivially breakable.
+                  <strong className="text-foreground">Shor's Algorithm</strong>, running on a sufficiently
+                  powerful quantum computer, can solve these problems exponentially faster than any classical
+                  algorithm. RSA-2048 and X25519 will eventually become breakable.
                 </p>
               </Section>
               <Section title="Why RSA & X25519 Are Vulnerable">
@@ -107,13 +107,13 @@ export default function InfoModal({ open, onOpenChange }: InfoModalProps) {
               </Section>
               <Section title="Why ML-KEM-768 Resists Quantum Attacks">
                 <p>
-                  <strong className="text-enc-mlkem">ML-KEM-768</strong> (formerly CRYSTALS-Kyber) is based 
-                  on lattice problems — specifically the Module Learning With Errors (MLWE) problem. No known 
+                  <strong className="text-enc-mlkem">ML-KEM-768</strong> (formerly CRYSTALS-Kyber) is based
+                  on lattice problems, specifically the Module Learning With Errors (MLWE) problem. No known
                   quantum algorithm can solve lattice problems efficiently.
                 </p>
                 <p className="mt-2">
-                  The <strong className="text-foreground">hybrid approach</strong> (X25519 + ML-KEM-768) provides 
-                  defense-in-depth: both must be broken to decrypt, combining battle-tested classical security 
+                  The <strong className="text-foreground">hybrid approach</strong> (X25519 + ML-KEM-768) provides
+                  defense-in-depth: both must be broken to decrypt, combining battle-tested classical security
                   with quantum resistance.
                 </p>
               </Section>
@@ -124,20 +124,20 @@ export default function InfoModal({ open, onOpenChange }: InfoModalProps) {
             <>
               <Section title="Timeline Assumptions">
                 <p>
-                  This simulator's timeline is based on projections from NIST, NSA, and leading quantum 
-                  computing researchers. These are <strong className="text-foreground">conservative estimates</strong> — 
-                  breakthroughs could accelerate the timeline.
+                  This simulator's timeline is based on projections from NIST, NSA, and leading quantum
+                  computing researchers. These are <strong className="text-foreground">conservative estimates</strong>.
+                  Breakthroughs could accelerate the timeline.
                 </p>
               </Section>
               <div className="space-y-2">
                 {[
-                  { year: '2026', event: 'Today — quantum computers experimental (~100 logical qubits)', color: 'text-enc-mlkem' },
+                  { year: '2026', event: 'Today. Quantum computers experimental (~100 logical qubits)', color: 'text-enc-mlkem' },
                   { year: '2030', event: 'Early quantum computers reach ~500 qubits', color: 'text-muted-foreground' },
                   { year: '2032', event: 'RSA-2048 becomes vulnerable to quantum attack', color: 'text-enc-x25519' },
-                  { year: '2035', event: 'RSA-2048 practically broken — ~2,000 qubits achieved', color: 'text-enc-rsa' },
+                  { year: '2035', event: 'RSA-2048 practically broken. ~2,000 qubits achieved', color: 'text-enc-rsa' },
                   { year: '2038', event: 'X25519 becomes vulnerable', color: 'text-enc-x25519' },
-                  { year: '2042', event: 'X25519 practically broken — ~5,000 qubits achieved', color: 'text-enc-rsa' },
-                  { year: '2050', event: 'Advanced QC widespread — ML-KEM-768 still secure ✓', color: 'text-enc-mlkem' },
+                  { year: '2042', event: 'X25519 practically broken. ~5,000 qubits achieved', color: 'text-enc-rsa' },
+                  { year: '2050', event: 'Advanced QC widespread. ML-KEM-768 still secure ✓', color: 'text-enc-mlkem' },
                 ].map((m) => (
                   <div key={m.year} className="flex gap-3 items-start">
                     <span className="font-mono text-xs font-bold text-foreground w-10 shrink-0">{m.year}</span>
@@ -175,9 +175,9 @@ export default function InfoModal({ open, onOpenChange }: InfoModalProps) {
               </Section>
               <Section title="About This Simulator">
                 <p>
-                  This is an educational tool designed to make the quantum threat tangible. 
-                  Timeline estimates are simplified projections, not predictions. The goal is to demonstrate 
-                  <strong className="text-foreground"> why we need quantum-resistant encryption today</strong>, 
+                  This is an educational tool designed to make the quantum threat tangible.
+                  Timeline estimates are simplified projections, not predictions. The goal is to demonstrate
+                  <strong className="text-foreground"> why we need quantum-resistant encryption today</strong>,
                   not to specify exactly when encryption will break.
                 </p>
               </Section>

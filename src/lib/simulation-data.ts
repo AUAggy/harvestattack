@@ -22,7 +22,7 @@ export const encryptionTypes: Record<EncryptionType, EncryptionInfo> = {
     brokenAt: 2035,
     qubitRequirement: 2000,
     description: 'Factoring-based encryption',
-    tooltip: 'Widely used for decades. Based on factoring large numbers — a problem quantum computers can solve efficiently using Shor\'s algorithm. Expected to break around 2035.',
+    tooltip: 'Widely used for decades. Based on factoring large numbers, a problem quantum computers can solve efficiently using Shor\'s algorithm. Expected to break around 2035.',
     colorClass: 'text-enc-rsa',
     glowClass: 'glow-rsa',
   },
@@ -118,5 +118,5 @@ export const timelineMilestones = [
   { year: 2035, label: 'RSA 🔴', description: 'RSA-2048 practically broken' },
   { year: 2038, label: 'X25519 ⚠️', description: 'X25519 becomes vulnerable' },
   { year: 2042, label: 'X25519 🔴', description: 'X25519 practically broken' },
-  { year: 2050, label: 'Future', description: 'Advanced QC widespread — ML-KEM-768 still secure ✓' },
+  { year: 2050, label: 'Future', description: 'Advanced QC widespread. ML-KEM-768 still secure ✓' },
 ];

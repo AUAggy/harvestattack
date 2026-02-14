@@ -126,7 +126,7 @@ const Index = () => {
         <div className="bg-surface-2/30 rounded-2xl border border-border p-4">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-sm font-semibold text-foreground">🎬 Scenarios</span>
-            <span className="text-xs text-muted-foreground">— Pick a preset or go custom</span>
+            <span className="text-xs text-muted-foreground">Pick a preset or go custom</span>
           </div>
           <ScenarioPresets activeScenario={activeScenario} onSelectScenario={handleScenario} />
         </div>
@@ -154,7 +154,7 @@ const Index = () => {
         <div className="bg-surface-2/30 rounded-2xl border border-border p-4 sm:p-6" data-tour="time-slider">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-sm font-semibold text-foreground">⏱️ Time Machine</span>
-            <span className="text-xs text-muted-foreground">— Drag to travel through time</span>
+            <span className="text-xs text-muted-foreground">Drag to travel through time</span>
           </div>
           <TimeSlider
             year={year}
@@ -184,10 +184,10 @@ const Index = () => {
             <span className="font-semibold text-foreground">Why does this matter?</span>
           </div>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Adversaries are recording encrypted traffic <strong className="text-foreground">right now</strong>, 
-            betting that quantum computers will eventually break the encryption. This is called 
-            <strong className="text-foreground"> "Harvest Now, Decrypt Later"</strong>. 
-            Data with long-term value — medical records, state secrets, financial data — needs 
+            Adversaries are recording encrypted traffic <strong className="text-foreground">right now</strong>,
+            betting that quantum computers will eventually break the encryption. This is
+            <strong className="text-foreground"> "Harvest Now, Decrypt Later"</strong>.
+            Data with long-term value (medical records, state secrets, financial data) needs
             quantum-resistant encryption <strong className="text-foreground">today</strong>, not when quantum computers arrive.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-4">

@@ -42,7 +42,7 @@ export const scenarios: Scenario[] = [
   {
     id: 'custom',
     label: 'Custom',
-    description: 'Full control — pick any encryption and year',
+    description: 'Full control. Pick any encryption and year',
     icon: <Sliders className="w-4 h-4" />,
     encryptionType: 'RSA_2048',
     targetYear: 2026,

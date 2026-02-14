@@ -55,7 +55,7 @@ export default function TimeSlider({ year, onChange, isPlaying, onPlayToggle, on
                     />
                   </TooltipTrigger>
                   <TooltipContent side="top" className="bg-surface-2 border-border text-foreground">
-                    <p className="font-semibold">{m.year} — {m.label}</p>
+                    <p className="font-semibold">{m.year} - {m.label}</p>
                     <p className="text-xs text-muted-foreground">{m.description}</p>
                   </TooltipContent>
                 </Tooltip>

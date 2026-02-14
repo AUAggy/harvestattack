@@ -19,7 +19,7 @@ const tourSteps: TourStep[] = [
   {
     target: '[data-tour="simulation-canvas"]',
     title: '2. Watch the Traffic Flow',
-    description: 'Messages flow from Alice to Bob — but the adversary in the middle is recording everything. Every packet is intercepted and stored.',
+    description: 'Messages flow from Alice to Bob, but the adversary in the middle is recording everything. Every packet is intercepted and stored.',
     position: 'bottom',
   },
   {
@@ -37,7 +37,7 @@ const tourSteps: TourStep[] = [
   {
     target: '[data-tour="scenario-presets"]',
     title: '5. Try a Scenario',
-    description: 'Jump straight to key moments — see RSA break at 2035, or watch ML-KEM-768 hold strong all the way to 2050!',
+    description: 'Jump straight to key moments. See RSA break at 2035, or watch ML-KEM-768 hold strong all the way to 2050.',
     position: 'top',
   },
 ];
