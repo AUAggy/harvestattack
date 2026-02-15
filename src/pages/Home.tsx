@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Eye, ClipboardCheck, Rocket, ArrowRight } from 'lucide-react';
+import { Eye, BookOpen, ClipboardCheck, Rocket, ArrowRight } from 'lucide-react';
 
 const journeyCards = [
   {
     to: '/understand',
     icon: Eye,
-    title: 'Understand the Threat',
-    description: 'See a live simulation of how encrypted data is harvested today and decrypted tomorrow.',
+    title: 'See It Happen',
+    description: 'Watch a live simulation of data harvesting and quantum decryption in action.',
+  },
+  {
+    to: '/learn',
+    icon: BookOpen,
+    title: 'Learn the Facts',
+    description: 'Separate myth from reality. See who\'s already migrating and the real cost of delay.',
   },
   {
     to: '/assess',
@@ -64,7 +70,7 @@ export default function Home() {
       </section>
 
       {/* Journey Cards */}
-      <section className="pb-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <section className="pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
         {journeyCards.map((card, i) => (
           <motion.div
             key={card.to}

@@ -1,8 +1,9 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { Zap, Eye, ClipboardCheck, Rocket, Share2 } from 'lucide-react';
+import { Zap, Eye, BookOpen, ClipboardCheck, Rocket, Share2 } from 'lucide-react';
 
 const navItems = [
-  { to: '/understand', label: 'Understand', icon: Eye },
+  { to: '/understand', label: 'Simulate', icon: Eye },
+  { to: '/learn', label: 'Learn', icon: BookOpen },
   { to: '/assess', label: 'Assess', icon: ClipboardCheck },
   { to: '/act', label: 'Act', icon: Rocket },
   { to: '/share', label: 'Share', icon: Share2 },

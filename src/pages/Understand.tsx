@@ -1,5 +1,4 @@
 import { useState, useCallback, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import EncryptionSelector from '@/components/simulator/EncryptionSelector';
@@ -8,10 +7,7 @@ import TimeSlider from '@/components/simulator/TimeSlider';
 import StatusDashboard from '@/components/simulator/StatusDashboard';
 import StorageVault from '@/components/simulator/StorageVault';
 import ScenarioPresets, { Scenario } from '@/components/simulator/ScenarioPresets';
-import MythBusters from '@/components/simulator/MythBusters';
-import WhosMigrating from '@/components/simulator/WhosMigrating';
-import CostOfWaiting from '@/components/simulator/CostOfWaiting';
-import { EncryptionType, encryptionTypes } from '@/lib/simulation-data';
+import { EncryptionType } from '@/lib/simulation-data';
 
 export default function Understand() {
   const [encryptionType, setEncryptionType] = useState<EncryptionType>('RSA_2048');
@@ -74,10 +70,10 @@ export default function Understand() {
       {/* Page Header */}
       <div className="text-center max-w-2xl mx-auto">
         <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
-          Understand the Threat
+          See the Threat in Action
         </h1>
         <p className="mt-2 text-muted-foreground">
-          See how "harvest now, decrypt later" works in real time. Pick an encryption method and watch what happens.
+          Pick an encryption method, hit play, and watch what happens as quantum computers advance.
         </p>
       </div>
 
@@ -135,50 +131,16 @@ export default function Understand() {
         messagesIntercepted={messagesIntercepted}
       />
 
-      {/* Education Section */}
-      <div className="border-t border-border pt-12 space-y-8">
-        <h2 className="text-xl font-bold text-foreground text-center">What You Need to Know</h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <MythBusters />
-          <WhosMigrating />
-        </div>
-
-        <CostOfWaiting />
-
-        {/* Bitcoin/ECDSA Callout */}
-        <div className="bg-card border border-border rounded-lg p-6">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl flex-shrink-0">&#8383;</span>
-            <div className="flex-1">
-              <h3 className="font-semibold text-foreground mb-2">
-                The $2.4 Trillion Question: Digital Signatures
-              </h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                Bitcoin and most cryptocurrencies use <strong className="text-foreground">ECDSA signatures</strong> that quantum computers will break. Every Bitcoin transaction is permanently public on the blockchain. When quantum computers arrive, addresses that have revealed their public key become vulnerable.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                <strong className="text-foreground">Why this matters to you:</strong> Your organization likely uses ECDSA signatures for code signing, SSH keys, API authentication, and TLS certificates. Same vulnerability.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* CTA to Assess */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        className="text-center py-8"
-      >
+      {/* CTA to Learn */}
+      <div className="text-center py-8">
         <Link
-          to="/assess"
+          to="/learn"
           className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:opacity-90 transition-opacity"
         >
-          Assess Your Risk
+          What You Need to Know
           <ArrowRight className="w-4 h-4" />
         </Link>
-      </motion.div>
+      </div>
     </div>
   );
 }

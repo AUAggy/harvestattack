@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Understand from "./pages/Understand";
+import Learn from "./pages/Learn";
 import Assess from "./pages/Assess";
 import Act from "./pages/Act";
 import Share from "./pages/Share";
@@ -23,6 +24,7 @@ const App = () => (
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/understand" element={<Understand />} />
+            <Route path="/learn" element={<Learn />} />
             <Route path="/assess" element={<Assess />} />
             <Route path="/act" element={<Act />} />
             <Route path="/share" element={<Share />} />
