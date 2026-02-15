@@ -144,7 +144,7 @@ export default function Understand() {
           <WhosMigrating />
         </div>
 
-        <CostOfWaiting currentYear={year} />
+        <CostOfWaiting />
 
         {/* Bitcoin/ECDSA Callout */}
         <div className="bg-card border border-border rounded-lg p-6">
