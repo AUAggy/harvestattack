@@ -76,7 +76,7 @@ Interactive simulation: ${siteUrl}`;
       </p>
 
       <div className="bg-secondary/50 rounded-lg border border-border p-4 mb-6">
-        <pre className="text-sm text-foreground whitespace-pre-wrap font-mono leading-relaxed">
+        <pre className="text-sm text-foreground whitespace-pre-wrap break-all font-mono leading-relaxed">
           {fullShareText}
         </pre>
       </div>
