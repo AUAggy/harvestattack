@@ -67,7 +67,7 @@ export default function ScenarioPresets({ activeScenario, onSelectScenario }: Sc
             className={`group flex items-center gap-2 px-4 py-2.5 rounded-xl border transition-all duration-200 text-left ${
               isActive
                 ? 'border-primary bg-primary/10 text-primary shadow-md shadow-primary/10'
-                : 'border-border bg-surface-2/50 text-muted-foreground hover:text-foreground hover:bg-surface-3/50 hover:border-border'
+                : 'border-border bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 hover:border-border'
             }`}
           >
             <span className={isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-foreground'}>

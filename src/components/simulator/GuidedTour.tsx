@@ -181,7 +181,7 @@ export default function GuidedTour({ onComplete }: GuidedTourProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
-          className="fixed z-[101] bg-surface-2 border border-border rounded-xl p-4 shadow-2xl"
+          className="fixed z-[101] bg-secondary border border-border rounded-xl p-4 shadow-2xl"
           style={getTooltipPosition()}
         >
           <div className="flex items-start justify-between mb-2">
@@ -197,7 +197,7 @@ export default function GuidedTour({ onComplete }: GuidedTourProps) {
                 <div
                   key={i}
                   className={`w-2 h-2 rounded-full transition-colors ${
-                    i === step ? 'bg-primary' : i < step ? 'bg-primary/40' : 'bg-surface-3'
+                    i === step ? 'bg-primary' : i < step ? 'bg-primary/40' : 'bg-secondary/80'
                   }`}
                 />
               ))}

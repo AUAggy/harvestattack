@@ -19,7 +19,7 @@ const colorMap: Record<EncryptionType, string> = {
   MLKEM768_HYBRID: 'border-enc-mlkem bg-enc-mlkem/10 text-enc-mlkem',
 };
 
-const inactiveClass = 'border-border bg-surface-2/50 text-muted-foreground hover:bg-surface-3/50';
+const inactiveClass = 'border-border bg-secondary text-muted-foreground hover:bg-secondary/80';
 
 export default function EncryptionSelector({ selected, onChange }: EncryptionSelectorProps) {
   return (
@@ -41,7 +41,7 @@ export default function EncryptionSelector({ selected, onChange }: EncryptionSel
                 <span className="sm:hidden">{enc.shortName}</span>
               </button>
             </TooltipTrigger>
-            <TooltipContent side="bottom" className="max-w-xs bg-surface-2 border-border text-foreground">
+            <TooltipContent side="bottom" className="max-w-xs bg-secondary border-border text-foreground">
               <p className="text-sm">{enc.tooltip}</p>
             </TooltipContent>
           </Tooltip>

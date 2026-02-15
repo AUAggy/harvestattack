@@ -57,7 +57,7 @@ export default function StatusDashboard({ year, encryptionType, messagesIntercep
         <div
           key={i}
           className={`rounded-xl border p-3 transition-colors duration-300 ${
-            card.highlight || 'bg-surface-2/50 border-border'
+            card.highlight || 'bg-secondary border-border'
           }`}
         >
           <div className="flex items-center gap-2 mb-1">

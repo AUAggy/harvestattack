@@ -57,7 +57,7 @@ export default function StorageVault({ encryptionType, year, messageCount }: Sto
           <span className="text-muted-foreground">Decryption</span>
           <span className={label.color}>{Math.round(progress)}%</span>
         </div>
-        <div className="h-2 rounded-full bg-surface-0 overflow-hidden">
+        <div className="h-2 rounded-full bg-background overflow-hidden">
           <motion.div
             className={`h-full rounded-full ${
               status === 'broken' ? 'bg-enc-rsa' : status === 'vulnerable' ? 'bg-enc-x25519' : 'bg-enc-mlkem'

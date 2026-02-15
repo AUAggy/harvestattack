@@ -58,7 +58,7 @@ export default function CostOfWaiting({ currentYear }: Props) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
-      className="bg-surface-2/30 rounded-2xl border border-border p-6"
+      className="bg-card rounded-2xl border border-border p-6"
     >
       <div className="flex items-center gap-2 mb-4">
         <Clock className="w-5 h-5 text-primary" />
@@ -77,7 +77,7 @@ export default function CostOfWaiting({ currentYear }: Props) {
             >
               <div className="flex justify-between items-start mb-2">
                 <span className="font-semibold text-sm">{s.label}</span>
-                <span className="text-xs font-mono bg-surface-0/50 px-2 py-0.5 rounded">
+                <span className="text-xs font-mono bg-background/50 px-2 py-0.5 rounded">
                   Done by {result.completionYear}
                 </span>
               </div>

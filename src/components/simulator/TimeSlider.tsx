@@ -21,14 +21,14 @@ export default function TimeSlider({ year, onChange, isPlaying, onPlayToggle, on
       <div className="flex items-center gap-3">
         <button
           onClick={onPlayToggle}
-          className="p-2 rounded-lg bg-surface-2 hover:bg-surface-3 text-foreground transition-colors"
+          className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
         </button>
         <button
           onClick={onReset}
-          className="p-2 rounded-lg bg-surface-2 hover:bg-surface-3 text-foreground transition-colors"
+          className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
           aria-label="Reset"
         >
           <RotateCcw className="w-4 h-4" />
@@ -36,7 +36,7 @@ export default function TimeSlider({ year, onChange, isPlaying, onPlayToggle, on
 
         <div className="flex-1 relative">
           {/* Track background */}
-          <div className="h-2 rounded-full bg-surface-2 relative">
+          <div className="h-2 rounded-full bg-secondary relative">
             {/* Filled track */}
             <div
               className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-primary to-quantum transition-all duration-150"
@@ -49,12 +49,12 @@ export default function TimeSlider({ year, onChange, isPlaying, onPlayToggle, on
                 <Tooltip key={m.year}>
                   <TooltipTrigger asChild>
                     <button
-                      className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-surface-3 border-2 border-muted-foreground hover:border-foreground transition-colors z-10"
+                      className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-secondary/80 border-2 border-muted-foreground hover:border-foreground transition-colors z-10"
                       style={{ left: `${mPct}%`, marginLeft: '-6px' }}
                       onClick={() => onChange(m.year)}
                     />
                   </TooltipTrigger>
-                  <TooltipContent side="top" className="bg-surface-2 border-border text-foreground">
+                  <TooltipContent side="top" className="bg-secondary border-border text-foreground">
                     <p className="font-semibold">{m.year} - {m.label}</p>
                     <p className="text-xs text-muted-foreground">{m.description}</p>
                   </TooltipContent>

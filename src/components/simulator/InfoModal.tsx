@@ -19,7 +19,7 @@ export default function InfoModal({ open, onOpenChange }: InfoModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[85vh] overflow-hidden bg-surface-1 border-border">
+      <DialogContent className="max-w-2xl max-h-[85vh] overflow-hidden bg-card border-border">
         <DialogHeader>
           <DialogTitle className="text-foreground flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-primary" />

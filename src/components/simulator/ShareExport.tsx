@@ -79,7 +79,7 @@ ${window.location.origin}
         Help others understand the quantum threat by sharing this simulation with your team, executives, or colleagues.
       </p>
 
-      <div className="bg-surface-0 rounded-lg border border-border p-4 mb-4">
+      <div className="bg-background rounded-lg border border-border p-4 mb-4">
         <pre className="text-xs text-muted-foreground whitespace-pre-wrap font-mono leading-relaxed">
           {shareText}
         </pre>
@@ -123,7 +123,7 @@ ${window.location.origin}
         </Button>
       </div>
 
-      <div className="mt-6 p-4 bg-surface-1 rounded-lg border border-border">
+      <div className="mt-6 p-4 bg-card rounded-lg border border-border">
         <p className="text-xs text-muted-foreground text-center">
           💡 <strong className="text-foreground">Tip:</strong> Share this with executives to explain why PQC migration budget is needed. The visualization makes the abstract threat concrete and urgent.
         </p>

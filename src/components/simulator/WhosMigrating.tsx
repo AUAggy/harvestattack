@@ -59,7 +59,7 @@ export default function WhosMigrating() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 }}
-      className="bg-surface-2/30 rounded-2xl border border-border p-6"
+      className="bg-card rounded-2xl border border-border p-6"
     >
       <div className="flex items-center gap-2 mb-4">
         <Building2 className="w-5 h-5 text-primary" />
@@ -75,7 +75,7 @@ export default function WhosMigrating() {
             href={ex.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-4 rounded-lg bg-surface-1 border border-border hover:border-primary/50 hover:bg-surface-2 transition-all duration-200"
+            className="group block p-4 rounded-lg bg-card border border-border hover:border-primary/50 hover:bg-secondary transition-all duration-200"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">

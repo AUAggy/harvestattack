@@ -40,7 +40,7 @@ export default function MythBusters() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="bg-surface-2/30 rounded-2xl border border-border p-6"
+      className="bg-card rounded-2xl border border-border p-6"
     >
       <div className="flex items-center gap-2 mb-4">
         <AlertTriangle className="w-5 h-5 text-destructive" />
@@ -69,7 +69,7 @@ export default function MythBusters() {
           </motion.div>
         ))}
       </div>
-      <div className="mt-6 p-4 bg-surface-1 rounded-lg border border-border">
+      <div className="mt-6 p-4 bg-card rounded-lg border border-border">
         <p className="text-xs text-muted-foreground text-center">
           <strong className="text-foreground">Bottom line:</strong> The threat is happening <strong className="text-foreground">right now</strong>, not in the future. Waiting is losing.
         </p>

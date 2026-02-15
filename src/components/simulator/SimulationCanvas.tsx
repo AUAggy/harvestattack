@@ -60,7 +60,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
   }, []);
 
   return (
-    <div className="relative w-full h-64 sm:h-80 overflow-hidden rounded-2xl bg-surface-0/50 border border-border">
+    <div className="relative w-full h-64 sm:h-80 overflow-hidden rounded-2xl bg-background/50 border border-border">
       {/* Connection line */}
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -135,7 +135,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
               <span className="text-xs text-muted-foreground">Sender</span>
             </div>
           </TooltipTrigger>
-          <TooltipContent className="bg-surface-2 border-border text-foreground">Sends encrypted messages</TooltipContent>
+          <TooltipContent className="bg-secondary border-border text-foreground">Sends encrypted messages</TooltipContent>
         </Tooltip>
       </div>
 
@@ -155,7 +155,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
               <span className="text-xs text-muted-foreground">Intercepting</span>
             </div>
           </TooltipTrigger>
-          <TooltipContent className="bg-surface-2 border-border text-foreground max-w-xs">
+          <TooltipContent className="bg-secondary border-border text-foreground max-w-xs">
             This represents any entity recording encrypted internet traffic today: governments, hackers, or corporations.
           </TooltipContent>
         </Tooltip>
@@ -173,7 +173,7 @@ export default function SimulationCanvas({ encryptionType, year, isPlaying, onMe
               <span className="text-xs text-muted-foreground">Receiver</span>
             </div>
           </TooltipTrigger>
-          <TooltipContent className="bg-surface-2 border-border text-foreground">Receives encrypted messages</TooltipContent>
+          <TooltipContent className="bg-secondary border-border text-foreground">Receives encrypted messages</TooltipContent>
         </Tooltip>
       </div>
 

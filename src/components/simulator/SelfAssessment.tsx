@@ -67,7 +67,7 @@ export default function SelfAssessment() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
-      className="bg-surface-2/30 rounded-2xl border border-border p-6"
+      className="bg-card rounded-2xl border border-border p-6"
     >
       <div className="mb-6">
         <h3 className="text-lg font-bold text-foreground mb-2">Do You Need to Care?</h3>
@@ -83,7 +83,7 @@ export default function SelfAssessment() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 + idx * 0.1 }}
-            className="p-4 rounded-lg bg-surface-1 border border-border"
+            className="p-4 rounded-lg bg-card border border-border"
           >
             <div className="flex items-start gap-2 mb-2">
               {q.critical && <AlertTriangle className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />}
@@ -105,7 +105,7 @@ export default function SelfAssessment() {
                 onClick={() => handleAnswer(q.id, false)}
                 className={`flex-1 py-2 px-4 rounded-lg border text-sm font-medium transition-all ${
                   answers[q.id] === false
-                    ? 'bg-surface-2 border-border text-foreground'
+                    ? 'bg-secondary border-border text-foreground'
                     : 'border-border text-muted-foreground hover:border-border hover:text-foreground'
                 }`}
               >
@@ -120,7 +120,7 @@ export default function SelfAssessment() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="mt-6 p-6 bg-surface-1 rounded-lg border-2 border-primary"
+          className="mt-6 p-6 bg-card rounded-lg border-2 border-primary"
         >
           <div className="text-center">
             <div className={`text-2xl font-bold ${risk?.color} mb-2`}>

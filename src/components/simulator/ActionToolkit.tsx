@@ -139,7 +139,7 @@ export default function ActionToolkit() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
-      className="bg-surface-2/30 rounded-2xl border border-border p-6"
+      className="bg-card rounded-2xl border border-border p-6"
     >
       <div className="flex items-center gap-2 mb-6">
         <FileText className="w-5 h-5 text-primary" />
@@ -184,7 +184,7 @@ export default function ActionToolkit() {
               )}
             </Button>
           </div>
-          <div className="bg-surface-0 rounded-lg border border-border p-4 font-mono text-xs leading-relaxed overflow-x-auto">
+          <div className="bg-background rounded-lg border border-border p-4 font-mono text-xs leading-relaxed overflow-x-auto">
             <pre className="whitespace-pre-wrap text-muted-foreground">{executiveEmail}</pre>
           </div>
           <p className="text-xs text-muted-foreground">
@@ -197,7 +197,7 @@ export default function ActionToolkit() {
             Standard migration framework (timeline varies by organization)
           </p>
           {migrationPhases.map((phase) => (
-            <div key={phase.phase} className="bg-surface-1 rounded-lg border border-border p-4">
+            <div key={phase.phase} className="bg-card rounded-lg border border-border p-4">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs font-mono bg-primary/20 text-primary px-2 py-0.5 rounded">
                   Phase {phase.phase}
@@ -234,7 +234,7 @@ export default function ActionToolkit() {
             Certificate Authority PQC Support Status (as of February 2026)
           </p>
           {caSupport.map((ca, idx) => (
-            <div key={idx} className="bg-surface-1 rounded-lg border border-border p-4">
+            <div key={idx} className="bg-card rounded-lg border border-border p-4">
               <div className="flex items-start justify-between mb-1">
                 <span className="font-semibold text-sm text-foreground">{ca.name}</span>
                 <span className={`text-xs font-mono ${ca.color}`}>{ca.status}</span>
@@ -259,7 +259,7 @@ export default function ActionToolkit() {
               href={resource.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-surface-1 rounded-lg border border-border p-4 hover:border-primary/50 hover:bg-surface-2 transition-all"
+              className="group block bg-card rounded-lg border border-border p-4 hover:border-primary/50 hover:bg-secondary transition-all"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
