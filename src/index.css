@@ -20,65 +20,65 @@
 
 @layer base {
   :root {
-    /* Dark cybersecurity theme */
-    --background: 222 47% 11%;
-    --foreground: 210 40% 96%;
+    /* Light professional theme */
+    --background: 40 20% 97%;
+    --foreground: 234 30% 14%;
 
-    --card: 217 33% 17%;
-    --card-foreground: 210 40% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 234 30% 14%;
 
-    --popover: 217 33% 17%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 234 30% 14%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 28 80% 52%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 22%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 40 15% 93%;
+    --secondary-foreground: 234 30% 14%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 40 15% 93%;
+    --muted-foreground: 240 10% 55%;
 
-    --accent: 263 70% 50%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 28 80% 52%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 25%;
-    --input: 217 33% 25%;
-    --ring: 217 91% 60%;
+    --border: 0 0% 0% / 0.08;
+    --input: 0 0% 0% / 0.08;
+    --ring: 28 80% 52%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Encryption type colors */
-    --enc-rsa: 0 84% 60%;
-    --enc-rsa-glow: 0 84% 60%;
-    --enc-x25519: 38 92% 50%;
-    --enc-x25519-glow: 38 92% 50%;
-    --enc-mlkem: 160 84% 39%;
-    --enc-mlkem-glow: 160 84% 39%;
+    /* Encryption type colors (desaturated for light theme) */
+    --enc-rsa: 0 65% 50%;
+    --enc-rsa-glow: 0 65% 50%;
+    --enc-x25519: 28 75% 50%;
+    --enc-x25519-glow: 28 75% 50%;
+    --enc-mlkem: 160 60% 35%;
+    --enc-mlkem-glow: 160 60% 35%;
 
     /* Simulation colors */
-    --quantum: 263 70% 50%;
-    --intercept: 0 84% 60%;
-    --transit: 217 91% 60%;
-    --safe: 160 84% 39%;
+    --quantum: 263 50% 50%;
+    --intercept: 0 65% 50%;
+    --transit: 217 70% 50%;
+    --safe: 160 60% 35%;
 
-    /* Surface layers */
-    --surface-0: 222 47% 7%;
-    --surface-1: 222 47% 11%;
-    --surface-2: 217 33% 17%;
-    --surface-3: 217 33% 22%;
+    /* Surface layers (light) */
+    --surface-0: 0 0% 100%;
+    --surface-1: 40 20% 97%;
+    --surface-2: 40 15% 93%;
+    --surface-3: 40 10% 88%;
 
-    --sidebar-background: 222 47% 7%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 217 33% 22%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 217 33% 25%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 234 30% 14%;
+    --sidebar-primary: 28 80% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 15% 93%;
+    --sidebar-accent-foreground: 234 30% 14%;
+    --sidebar-border: 0 0% 0% / 0.08;
+    --sidebar-ring: 28 80% 52%;
   }
 }
 
@@ -98,19 +98,4 @@
 }
 
 @layer utilities {
-  .glow-rsa {
-    box-shadow: 0 0 20px hsl(var(--enc-rsa) / 0.4), 0 0 60px hsl(var(--enc-rsa) / 0.1);
-  }
-  .glow-x25519 {
-    box-shadow: 0 0 20px hsl(var(--enc-x25519) / 0.4), 0 0 60px hsl(var(--enc-x25519) / 0.1);
-  }
-  .glow-mlkem {
-    box-shadow: 0 0 20px hsl(var(--enc-mlkem) / 0.4), 0 0 60px hsl(var(--enc-mlkem) / 0.1);
-  }
-  .glow-quantum {
-    box-shadow: 0 0 20px hsl(var(--quantum) / 0.4), 0 0 60px hsl(var(--quantum) / 0.1);
-  }
-  .text-glow {
-    text-shadow: 0 0 20px currentColor;
-  }
 }
