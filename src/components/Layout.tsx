@@ -57,12 +57,12 @@ export default function Layout() {
             <a href="https://www.cisa.gov/quantum" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               CISA Guidance
             </a>
-            <a href="https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS_.PDF" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+            <a href="https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               NSA CNSA 2.0
             </a>
           </div>
-          <p className="text-xs text-muted-foreground mt-4">
-            Built with the Feynman Technique. Understand quantum threats one concept at a time.
+          <p className="text-xs text-muted-foreground mt-4 max-w-lg mx-auto">
+            <strong>harvestattack.com</strong> is a free educational tool by <a href="https://miaggy.com" target="_blank" rel="noopener noreferrer" className="font-bold hover:underline">miaggy.com</a>. Timelines are estimates based on published research. Consult a qualified professional for your organization's security decisions.
           </p>
         </div>
       </footer>

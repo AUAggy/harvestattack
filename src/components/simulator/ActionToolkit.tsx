@@ -12,7 +12,7 @@ I've completed a quantum computing cryptography risk assessment for our infrastr
 
 THE THREAT (Harvest Attacks - Happening NOW)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Sophisticated adversaries are recording our encrypted traffic TODAY to decrypt it when quantum computers arrive (estimated ~2035). This is not a future threat—the harvesting is happening now.
+Sophisticated adversaries are recording our encrypted traffic TODAY to decrypt it when quantum computers arrive (estimated ~2035). This is not a future threat. The harvesting is happening now.
 
 Our data has been transmitting over vulnerable channels since [YEAR] ([X] years of harvested traffic).
 
@@ -110,7 +110,7 @@ const resources = [
   },
   {
     title: 'NSA CNSA 2.0',
-    url: 'https://media.defense.gov/2022/Sep/07/2003071834/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS_.PDF',
+    url: 'https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF',
     description: 'NSA quantum-resistant algorithm requirements',
   },
   {

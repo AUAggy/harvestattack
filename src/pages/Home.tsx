@@ -52,7 +52,7 @@ export default function Home() {
         >
           Nation-state adversaries are capturing your encrypted traffic today, waiting for quantum
           computers to decrypt it tomorrow. This is called a "harvest now, decrypt later" attack
-          — and it's already happening.
+          and it's already happening.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -80,11 +80,11 @@ export default function Home() {
           >
             <Link
               to={card.to}
-              className="block bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow group"
+              className="block bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow group h-full flex flex-col"
             >
               <card.icon className="w-6 h-6 text-primary mb-3" />
               <h3 className="font-semibold text-foreground mb-2">{card.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{card.description}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1">{card.description}</p>
               <span className="inline-flex items-center gap-1 mt-4 text-sm text-primary font-medium group-hover:gap-2 transition-all">
                 Explore <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -100,18 +100,13 @@ export default function Home() {
         </p>
         <div className="flex flex-wrap justify-center gap-6">
           {migrators.map((name) => (
-            <span key={name} className="text-sm font-medium text-foreground/60">{name}</span>
+            <Link key={name} to="/learn" className="text-sm font-medium text-foreground/60 hover:text-primary transition-colors">
+              {name}
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* Feynman Quote */}
-      <section className="py-16 text-center max-w-2xl mx-auto">
-        <blockquote className="text-lg sm:text-xl italic text-foreground/80 leading-relaxed">
-          "If you can't explain it simply, you don't understand it well enough."
-        </blockquote>
-        <p className="mt-3 text-sm text-muted-foreground">— Richard Feynman</p>
-      </section>
     </div>
   );
 }

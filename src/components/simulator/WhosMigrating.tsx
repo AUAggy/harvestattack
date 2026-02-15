@@ -91,12 +91,12 @@ export default function WhosMigrating() {
               </div>
               <div className="text-right flex-shrink-0">
                 <div className="text-xs font-mono text-primary">{ex.deadline}</div>
-                <div className={`text-xs mt-1 px-2 py-0.5 rounded ${
+                <div className={`text-xs mt-1 px-2 py-0.5 rounded font-medium ${
                   ex.status === 'Deployed'
-                    ? 'bg-green-500/20 text-green-400'
+                    ? 'bg-green-50 text-green-800 border border-green-200'
                     : ex.status === 'In Progress'
-                    ? 'bg-yellow-500/20 text-yellow-400'
-                    : 'bg-blue-500/20 text-blue-400'
+                    ? 'bg-yellow-50 text-yellow-800 border border-yellow-200'
+                    : 'bg-blue-50 text-blue-800 border border-blue-200'
                 }`}>
                   {ex.status}
                 </div>

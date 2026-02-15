@@ -12,11 +12,7 @@ export default function Share() {
         </p>
       </div>
 
-      <ShareExport
-        encryptionType="RSA_2048"
-        year={2035}
-        messagesIntercepted={0}
-      />
+      <ShareExport />
     </div>
   );
 }

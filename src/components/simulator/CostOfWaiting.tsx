@@ -17,7 +17,7 @@ export default function CostOfWaiting() {
   if (startYear <= 2026) {
     severity = 'safe';
     headline = 'Minimal exposure';
-    detail = 'You finish migrating by 2028 — well before RSA is estimated to break. Almost no data is harvested.';
+    detail = 'You finish migrating by 2028, well before RSA is estimated to break. Almost no data is harvested.';
   } else if (startYear <= 2030) {
     severity = 'warning';
     headline = `${harvestedYears} years of data exposed`;
@@ -29,7 +29,7 @@ export default function CostOfWaiting() {
   } else {
     severity = 'critical';
     headline = `${harvestedYears}+ years fully compromised`;
-    detail = `All data from 2026–${startYear} is likely decryptable. Migration doesn't complete until ${completionYear} — years after RSA breaks.`;
+    detail = `All data from 2026 to ${startYear} is likely decryptable. Migration does not complete until ${completionYear}, years after RSA breaks.`;
   }
 
   const severityConfig = {
