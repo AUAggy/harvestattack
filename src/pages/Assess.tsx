@@ -840,7 +840,7 @@ function AssetSection({ kind }: { kind: AssetKind }) {
                 onToggle={() => setOpenId(expanded ? null : asset.localId)}
                 onRemove={() => remove(asset.localId)}
               >
-                <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
                   <div className="min-w-0">
                     <AssetEditor asset={asset} onPatch={(patch) => update(asset.localId, patch)} />
                   </div>
@@ -1332,7 +1332,7 @@ function PkiSection() {
                 onToggle={() => setOpenId(expanded ? null : review.localId)}
                 onRemove={() => remove(review.localId)}
               >
-                <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+                <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
                   <div className="min-w-0">
                     <PkiReviewEditor review={review} onPatch={(patch) => update(review.localId, patch)} />
                   </div>

@@ -41,7 +41,7 @@ export function CohortTimeline({ scenario, result, viewMonth }: CohortTimelinePr
       <div className="rounded-lg border border-border bg-white p-4">
         <div
           aria-hidden="true"
-          className="relative overflow-x-auto pb-2"
+          className="relative max-w-full overflow-x-auto pb-2"
           style={{ minHeight: BAR_HEIGHT + 40 }}
         >
           <div className="relative" style={{ width: result.cohorts.length * COL_WIDTH, height: BAR_HEIGHT + 20 }}>

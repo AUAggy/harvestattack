@@ -75,7 +75,7 @@ const STACK_ROWS: { fn: string; example: string; question: string }[] = [
 
 function ProtectionStack() {
   return (
-    <div className="overflow-x-auto rounded-lg border border-border bg-white">
+    <div className="max-w-full overflow-x-auto rounded-lg border border-border bg-white">
       <table className="w-full min-w-[42rem] text-left text-sm">
         <caption className="sr-only">
           The four jobs of a protection stack, with a teaching example and the

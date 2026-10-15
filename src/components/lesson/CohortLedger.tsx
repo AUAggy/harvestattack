@@ -36,7 +36,7 @@ export function CohortLedger({
         protection and its status under your current assumptions. Protection never changes after
         transmission.
       </p>
-      <div className="mt-3 overflow-x-auto rounded-lg border border-border" role="region" aria-label="Cohort ledger table" tabIndex={0}>
+      <div className="mt-3 max-w-full overflow-x-auto rounded-lg border border-border" role="region" aria-label="Cohort ledger table" tabIndex={0}>
         <table className="w-full min-w-[720px] border-collapse bg-white text-sm">
           <caption className="sr-only">
             Illustrative cohorts with transmission month, protection, recording status at the view

@@ -203,7 +203,7 @@ export default function Share() {
         </p>
       </div>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[340px_minmax(0,1fr)]">
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[340px_minmax(0,1fr)]">
         {/* Selection rail: visible in normal reading, removed from printouts */}
         <aside aria-labelledby="selection-heading" className="print:hidden">
           <div className="rounded-lg border border-border bg-white p-4">

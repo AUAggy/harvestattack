@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <div className="container px-4 py-10 sm:px-6 sm:py-14">
       {/* Asymmetric editorial opening */}
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-14">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-14">
         <header className="max-w-[68ch]">
           <p className="text-sm font-medium uppercase tracking-wide text-primary">
             Harvest now, decrypt later

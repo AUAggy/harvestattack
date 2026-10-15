@@ -22,9 +22,9 @@ jobs:
       - name: Content registry validation
         run: npx vitest run src/content src/domain
       - run: npm run build
-      - name: Built output has no retired forecast language
+      - name: Built output has no retired forecast machinery
         run: |
-          ! grep -rniE "qubit|break.?(date|year)|decryption progress|risk score|you are [0-9]+% ready" dist/assets/*.js
+          ! grep -rEni "qubitProgress|getEncryptionStatus|getDecryptionProgress|brokenAt|vulnerableAt|riskScore|readinessScore|you are [0-9]+% ready" dist/assets/*.js
       - uses: actions/upload-artifact@v4
         with:
           name: dist

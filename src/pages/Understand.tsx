@@ -150,7 +150,7 @@ export default function Understand() {
         </p>
       </header>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="min-w-0 space-y-6">
           <CohortTimeline scenario={scenario} result={result} viewMonth={viewMonth} />
 
@@ -177,7 +177,7 @@ export default function Understand() {
               <IconButton onClick={restart} label="Restart playback at the first month">
                 Restart
               </IconButton>
-              <div className="ml-auto flex items-center gap-2">
+              <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
                 <label htmlFor="view-month" className="text-sm text-muted-foreground">
                   View month
                 </label>
@@ -192,7 +192,7 @@ export default function Understand() {
                     setPlaying(false);
                     setViewMonth(Number(event.target.value));
                   }}
-                  className="h-2 w-40 cursor-pointer appearance-none rounded-full bg-surface-3 accent-primary"
+                  className="h-2 min-w-0 max-w-[10rem] flex-1 cursor-pointer appearance-none rounded-full bg-surface-3 accent-primary"
                 />
                 <input
                   id="view-month-number"

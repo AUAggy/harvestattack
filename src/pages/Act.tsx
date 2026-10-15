@@ -84,7 +84,7 @@ function ArtifactBlock({ label, text }: { label: string; text: string }) {
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
       <pre
         aria-label={label}
-        className="mt-2 select-text overflow-x-auto rounded-md bg-surface-2 p-3 font-mono text-xs leading-relaxed"
+        className="mt-2 max-w-full select-text overflow-x-auto rounded-md bg-surface-2 p-3 font-mono text-xs leading-relaxed"
       >
         {text}
       </pre>
