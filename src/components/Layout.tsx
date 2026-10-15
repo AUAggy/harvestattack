@@ -105,9 +105,18 @@ export default function Layout() {
             <div className="max-w-md">
               <p className="text-sm font-medium text-foreground">About this site</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                HarvestAttack is a free educational tool. It explains how recorded traffic can be
-                attacked later and what evidence helps you plan. It does not inspect your connection,
-                detect interception, or assess any organization.
+                HarvestAttack is a free educational tool by{" "}
+                <a
+                  href="https://miaggy.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link underline underline-offset-2 hover:underline"
+                >
+                  miaggy.com
+                </a>
+                . It explains how recorded traffic can be attacked later and what evidence helps you
+                plan. It does not inspect your connection, detect interception, or assess any
+                organization.
               </p>
             </div>
             <nav aria-label="Site information" className="flex flex-col gap-2 text-sm">
