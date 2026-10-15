@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Gates stay independent: a Vite build is not a substitute for TypeScript.
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - name: Content registry validation
+        run: npx vitest run src/content src/domain
+      - run: npm run build
+      - name: Built output has no retired forecast language
+        run: |
+          ! grep -rniE "qubit|break.?(date|year)|decryption progress|risk score|you are [0-9]+% ready" dist/assets/*.js
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
