@@ -34,7 +34,7 @@ const steps = [
   },
   {
     title: "Migration protects later transmissions",
-    body: "Moving a connection to post-quantum key establishment changes the protection of traffic sent after the change. It cannot reach back and upgrade copies that were already saved.",
+    body: "Moving a connection to post-quantum key establishment (the step where two sides agree on the key that encrypts it) protects only traffic sent after the move. It cannot reach back and upgrade copies that were already saved.",
   },
   {
     title: "Evidence decides the next action",
@@ -87,9 +87,8 @@ export default function Home() {
             Someone with access to a network path can copy encrypted traffic and store it for
             years. If computers are ever built that can break today's public-key encryption, those
             stored copies could be opened. Post-quantum cryptography is the newer generation of
-            encryption, designed so that traffic recorded today stays protected against that
-            possibility. This site explains the idea with one worked example, then helps you
-            collect evidence about your own systems.
+            encryption, designed to hold up against that kind of computer. This site explains the
+            idea with one worked example, then helps you collect evidence about your own systems.
           </p>
           <p className="mt-5 max-w-[52ch] rounded-md bg-surface-2 p-3 text-sm leading-relaxed">
             This tool explains a scenario. It does not inspect this connection or detect
@@ -149,8 +148,10 @@ export default function Home() {
             Four jobs, four questions
           </h2>
           <p className="mt-3 max-w-[68ch] leading-relaxed text-muted-foreground">
-            A system does four different cryptographic jobs. Support for one never covers another,
-            so each job needs its own evidence.
+            A system runs four different cryptographic jobs: agree on a key, encrypt the data, sign
+            and verify, and guard private keys. Support for one job never covers another, so each
+            needs its own evidence. (A "hop" below is one leg of a connection, such as browser to
+            CDN or CDN to server.)
           </p>
           <ul className="mt-6 divide-y divide-border rounded-lg border border-border bg-white">
             {stackRows.map((row) => (

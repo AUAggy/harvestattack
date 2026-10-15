@@ -102,7 +102,7 @@ export default function Understand() {
         : undefined;
     flow.lifetimeBasis = "Copied from the lesson example. Replace with your own evidence.";
     flow.knownAlgorithms =
-      "Lesson example: classical before cutover, hybrid (e.g. X25519MLKEM768) after.";
+      "Lesson example: classical before cutover, hybrid (such as X25519MLKEM768) after.";
     flow.nextAction = "Replace the illustrative assumptions with this flow's real endpoints and evidence.";
     dispatch({ type: "add-flow", asset: flow });
     navigate("/assess");
@@ -144,8 +144,9 @@ export default function Understand() {
         </h1>
         <p className="mt-3 text-base leading-relaxed text-muted-foreground">
           <strong className="font-semibold text-foreground">Illustrative scenario.</strong> Capture of
-          the example path is assumed, never observed. You control the assumptions; the model shows
-          what would follow from them.
+          the example path is assumed, never observed. Each bar below is one cohort: a single
+          illustrative item, sent in a known month and recorded with the protection it had at
+          transmission. You control the assumptions; the model shows what would follow from them.
         </p>
       </header>
 

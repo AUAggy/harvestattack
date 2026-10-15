@@ -147,9 +147,10 @@ export default function Sources() {
       <h1 className="text-3xl font-bold">Sources and claim status</h1>
 
       <p className="mt-4 text-muted-foreground">
-        Each claim on this site is one scoped statement with its own record: the
-        sources it rests on, when a maintainer last re-read those sources, and
-        when the next review is due. Freshness is per-claim on purpose. A single
+        Every claim on this site is one narrow statement, never bigger than its
+        source supports. Each claim carries its own record: the sources it rests
+        on, when a maintainer last re-read those sources, and when the next
+        review is due. Freshness is per-claim on purpose. A single
         site-wide "fact-checked" badge would hide the difference between a final
         standard and a vendor page that can change without notice. To report an
         error, include the claim id (for example, claim-fips-203-final) so the

@@ -399,7 +399,7 @@ export default function Learn() {
               The mechanism is the easy part. Three conditions sit around it. First,
               negotiation: both endpoints must offer and accept the hybrid for a given
               connection. Second, downgrade behavior: the protocol's protections have to
-              stop an attacker from forcing a weaker choice, which is one reason what a
+              stop an attacker from forcing a weaker choice. That is one reason what a
               connection actually negotiated matters more than what a library claims.
               Third, software support: the implementation has to exist in every relevant
               product on the path.

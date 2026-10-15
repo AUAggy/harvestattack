@@ -561,7 +561,7 @@ export default function Act() {
 
           <ExerciseQuestion
             checkId="act-migration-count"
-            prompt="Under these assumptions, how many recorded cohorts still fall in the overlap at month 60: transmitted before the capability arrives, classical in the attacker's copy, and still inside their confidentiality window?"
+            prompt="Under these assumptions, how many recorded cohorts still fall in the overlap at month 60: transmitted before the capability arrives, classical in the attacker's copy, and inside their confidentiality window?"
             options={migrationOptions}
             correctId={migrationCorrectId}
             correctNote={migrationCorrectNote}
