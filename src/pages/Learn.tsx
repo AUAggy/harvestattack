@@ -208,7 +208,7 @@ const GLOSSARY: GlossaryEntry[] = [
   {
     term: "Cryptographically relevant quantum computer (CRQC)",
     definition:
-      "A quantum computer able to run attacks that matter against real keys. None is publicly demonstrated against deployed key sizes.",
+      "A quantum computer able to run practical attacks against real keys. None is publicly demonstrated against deployed key sizes.",
   },
   {
     term: "Key establishment",
@@ -351,8 +351,7 @@ export default function Learn() {
               traffic. Under the assumed future attack, the attacker works on that
               recorded public material to recover the session key. The key was generated
               ephemerally, but the attack does not care; it runs on whatever was captured.
-              This is exactly why the lesson treats recorded copies as the thing that
-              matters.
+              This is exactly why the lesson is built around recorded copies.
             </p>
             <p>
               The same reasoning explains why recovering a signing key does not decrypt
@@ -399,8 +398,8 @@ export default function Learn() {
               The mechanism is the easy part. Three conditions sit around it. First,
               negotiation: both endpoints must offer and accept the hybrid for a given
               connection. Second, downgrade behavior: the protocol's protections have to
-              stop an attacker from forcing a weaker choice. That is one reason what a
-              connection actually negotiated matters more than what a library claims.
+              stop an attacker from forcing a weaker choice. That is one reason to check
+              what a connection actually negotiated instead of trusting what a library claims.
               Third, software support: the implementation has to exist in every relevant
               product on the path.
             </p>

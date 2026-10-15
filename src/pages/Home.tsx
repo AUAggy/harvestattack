@@ -38,7 +38,7 @@ const steps = [
   },
   {
     title: "Evidence decides the next action",
-    body: "What matters is what each system actually negotiates, signs, and stores, and how long each item must stay secret. The worksheet turns that into a short list of evidence to collect.",
+    body: "Each system negotiates, signs, and stores different things, and each item must stay secret for a different length of time. The worksheet turns that into a short list of evidence to collect.",
   },
 ];
 
@@ -91,8 +91,8 @@ export default function Home() {
             idea with one worked example, then helps you collect evidence about your own systems.
           </p>
           <p className="mt-5 max-w-[52ch] rounded-md bg-surface-2 p-3 text-sm leading-relaxed">
-            This tool explains a scenario. It does not inspect this connection or detect
-            interception.
+            This tool does not inspect this connection and does not detect interception. It exists
+            to explain the scenario.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <Link

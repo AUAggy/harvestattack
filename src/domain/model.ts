@@ -5,7 +5,7 @@
  * browser APIs, no timers, no random data, and no UI. Everything here derives
  * from explicit month offsets relative to a fixed reference month.
  *
- * Teaching boundary (see plans/harvestattack-evidence-led-rebuild-implementation-plan.md §6):
+ * Teaching boundary:
  * - A cohort is one illustrative item transmitted in a given month, not a
  *   measured packet rate or an organization-wide volume.
  * - Protection is fixed at transmission: classical before cutover, hybrid at

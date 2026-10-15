@@ -124,8 +124,8 @@ export default function Layout() {
           </div>
           <p className="mt-8 text-xs leading-relaxed text-muted-foreground">
             Content is reviewed on a schedule shown on the Sources page. Each claim carries its own
-            checked date. For security decisions that matter, consult a qualified professional who
-            knows your systems.
+            checked date. For real security decisions, consult a qualified professional who knows
+            your systems.
           </p>
         </div>
       </footer>

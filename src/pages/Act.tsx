@@ -63,7 +63,7 @@ const VENDOR_QUESTIONS = `Post-quantum capability questions
 9. Support lifecycle: How long is the capability supported, and how are changes or deprecations announced?
 10. Documented limitations: Which constraints, exclusions, and known interoperability gaps are documented?`;
 
-/** The lesson's fixture-style inputs (plan 9.2, item 3). Never re-derived here. */
+/** The lesson's fixture-style inputs. Never re-derived here. */
 const MIGRATION_INPUTS: ScenarioInputs = {
   migrationStartMonth: 0,
   migrationDurationMonths: 24,
@@ -708,7 +708,7 @@ export default function Act() {
             wrongNote={
               <>
                 Changing two things at once, such as the algorithm and the trust store, hides which
-                change mattered. Isolate the failing operation on the failing component first, then
+                change was responsible. Isolate the failing operation on the failing component first, then
                 change one variable at a time and record what each change did.
               </>
             }

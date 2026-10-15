@@ -92,8 +92,8 @@ export function AssumptionsPanel({ scenario, dispatch }: AssumptionsPanelProps) 
         Assumptions
       </h2>
       <p className="text-xs leading-relaxed text-muted-foreground">
-        These are your teaching assumptions. Changing them edits the example; it never changes what
-        an attacker already holds.
+        These are your teaching assumptions. Changing them edits the example; it does not
+        change what an attacker already holds.
       </p>
 
       <NumberField

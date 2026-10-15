@@ -258,7 +258,7 @@ export default function Understand() {
               </p>
               <p>
                 Forward secrecy does not fix this: a recorded ephemeral public key can be attacked
-                later just like a static one, which is exactly why the recorded copy matters.
+                later just like a static one. What the attacker keeps is the recorded copy.
               </p>
             </div>
           </details>
@@ -285,7 +285,7 @@ export default function Understand() {
                   },
                   {
                     id: "disappears",
-                    text: "It stops mattering once the migration finishes.",
+                    text: "It becomes irrelevant once the migration finishes.",
                   },
                 ].map((option) => (
                   <label key={option.id} className="flex items-start gap-2">
