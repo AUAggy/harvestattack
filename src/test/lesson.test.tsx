@@ -17,7 +17,7 @@ function renderLesson() {
 }
 
 function ledgerTable() {
-  return screen.getByRole("region", { name: "Cohort ledger table" });
+  return screen.getByRole("region", { name: "Item-by-item table" });
 }
 
 function firstDataRow() {
@@ -53,21 +53,19 @@ afterEach(() => {
 });
 
 describe("Understand lesson", () => {
-  it("renders the illustrative-scenario label and its scope sentence", () => {
+  it("renders the teaching-example label and its scope sentence", () => {
     renderLesson();
-    expect(screen.getByText("Illustrative scenario.")).toBeInTheDocument();
+    expect(screen.getByText("This is a teaching example.")).toBeInTheDocument();
     expect(
-      screen.getByText(/Capture of the example path is assumed, never observed\./),
+      screen.getByText(/Someone recording everything on this path is assumed, never observed\./),
     ).toBeInTheDocument();
   });
 
   it("states an overlap count that matches deriveScenario for the default assumptions", () => {
     const { container } = renderLesson();
     const expected = deriveScenario(DEFAULT_SCENARIO, 0).overlapCount;
-    const plural = expected === 1 ? "" : "s";
-    expect(resultSentence(container)).toContain(
-      `${expected} illustrative cohort${plural} transmitted before the cutover`,
-    );
+    const noun = expected === 1 ? "1 example item sent before the migration must" : `${expected} example items sent before the migration must`;
+    expect(resultSentence(container)).toContain(noun);
   });
 
   it("shows Hybrid protection for the earliest cohorts after an instant cutover", () => {

@@ -17,7 +17,7 @@ interface OverlapClass {
 function overlapClass(overlap: ThreeValue): OverlapClass {
   switch (overlap) {
     case "yes":
-      return { className: "overlap-yes", label: "overlap at assumed capability" };
+      return { className: "overlap-yes", label: "exposed under the assumed attack" };
     case "no":
       return { className: "", label: "no overlap at assumed capability" };
     default:
@@ -103,26 +103,26 @@ export function CohortTimeline({ scenario, result, viewMonth }: CohortTimelinePr
         </div>
         <figcaption className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5">
-            <span className="pattern-classical inline-block h-3 w-4 rounded-sm" /> Classical protection at transmission
+            <span className="pattern-classical inline-block h-3 w-4 rounded-sm" /> Sent with classical protection
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="pattern-hybrid inline-block h-3 w-4 rounded-sm" /> Hybrid protection at transmission
+            <span className="pattern-hybrid inline-block h-3 w-4 rounded-sm" /> Sent with hybrid protection
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="overlap-yes inline-block h-3 w-4 rounded-sm bg-surface-2" /> In overlap at assumed capability
+            <span className="overlap-yes inline-block h-3 w-4 rounded-sm bg-surface-2" /> Exposed at the assumed attack date
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="overlap-unknown inline-block h-3 w-4 rounded-sm bg-surface-2" /> Overlap unknown
+            <span className="overlap-unknown inline-block h-3 w-4 rounded-sm bg-surface-2" /> Exposure unknown: an input is missing
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" /> Recorded at the current view month
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-foreground" /> Recorded by the view month
           </span>
-          <span>Faded bars: not yet transmitted at the view month.</span>
+          <span>Faded bars: not sent yet at the view month.</span>
         </figcaption>
       </div>
       <p className="mt-2 text-xs text-muted-foreground">
-        Illustrative unit: one item per bar, one bar every six months. This is a teaching diagram,
-        not measured traffic. A text version follows in the cohort ledger.
+        Each bar is one example item; a new bar appears every six months. This is a teaching
+        diagram, not measured traffic. The lesson's item list says the same thing in words.
       </p>
     </figure>
   );

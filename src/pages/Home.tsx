@@ -117,8 +117,8 @@ export default function Home() {
             <CohortTimeline scenario={DEFAULT_SCENARIO} result={figureResult} viewMonth={0} />
           </div>
           <p className="mt-2 max-w-md text-xs leading-relaxed text-muted-foreground">
-            A static slice of the lesson figure: one illustrative stream copied every six months,
-            switching from classical to hybrid protection at the cutover.
+            One example stream from the lesson, copied every six months, switching from classical to
+            hybrid protection at the cutover.
           </p>
         </div>
       </div>

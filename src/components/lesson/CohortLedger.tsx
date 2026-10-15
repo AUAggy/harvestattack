@@ -1,15 +1,15 @@
 import { formatMonth, type ScenarioResult, type ThreeValue } from "@/domain/model";
 
 const OVERLAP_LABELS: Record<ThreeValue, string> = {
-  yes: "Yes, in overlap at the assumed capability month",
-  no: "No overlap under these assumptions",
+  yes: "Yes: sent before the assumed attack and still required to stay secret at that date",
+  no: "No under these assumptions",
   unknown: "Unknown: an input is missing",
 };
 
 const WINDOW_LABELS: Record<ThreeValue, string> = {
-  yes: "Inside the chosen window",
-  no: "Outside the chosen window",
-  unknown: "Unknown lifetime",
+  yes: "Yes",
+  no: "No",
+  unknown: "Unknown: no lifetime set",
 };
 
 /**
@@ -29,26 +29,27 @@ export function CohortLedger({
   return (
     <section aria-labelledby="ledger-heading" className="mt-8">
       <h2 id="ledger-heading" className="text-lg font-semibold">
-        Cohort ledger
+        Item by item
       </h2>
       <p className="mt-1 max-w-[72ch] text-sm leading-relaxed text-muted-foreground">
-        Every bar in the diagram is one illustrative item, listed here with its fixed transmission
-        protection and its status under your current assumptions. Protection never changes after
-        transmission.
+        Each bar in the diagram is one item, and this table says the same thing in words: when each
+        item was sent, what protected it at that moment, and what your assumptions say happens to
+        it. An item keeps the protection it was sent with. Nothing upgrades it later.
       </p>
-      <div className="mt-3 max-w-full overflow-x-auto rounded-lg border border-border" role="region" aria-label="Cohort ledger table" tabIndex={0}>
+      <div className="mt-3 max-w-full overflow-x-auto rounded-lg border border-border" role="region" aria-label="Item-by-item table" tabIndex={0}>
         <table className="w-full min-w-[720px] border-collapse bg-white text-sm">
           <caption className="sr-only">
-            Illustrative cohorts with transmission month, protection, recording status at the view
-            month, overlap at the assumed capability month, and chosen-window status.
+            One row per example item: month sent, protection when sent, whether it is shown as
+            recorded at the view month, whether the assumed attack arrives while it must still stay
+            secret, and whether it must stay secret at the view month.
           </caption>
           <thead>
             <tr className="border-b border-border bg-surface-1 text-left">
-              <th scope="col" className="px-3 py-2 font-medium">Transmitted</th>
-              <th scope="col" className="px-3 py-2 font-medium">Protection at transmission</th>
+              <th scope="col" className="px-3 py-2 font-medium">Sent</th>
+              <th scope="col" className="px-3 py-2 font-medium">Protection when sent</th>
               <th scope="col" className="px-3 py-2 font-medium">Recorded at {formatMonth(viewMonth)}?</th>
-              <th scope="col" className="px-3 py-2 font-medium">Overlap at assumed capability</th>
-              <th scope="col" className="px-3 py-2 font-medium">Chosen window at view month</th>
+              <th scope="col" className="px-3 py-2 font-medium">Exposed under your assumptions?</th>
+              <th scope="col" className="px-3 py-2 font-medium">Must stay secret at {formatMonth(viewMonth)}?</th>
             </tr>
           </thead>
           <tbody>

@@ -108,28 +108,43 @@ export default function Understand() {
     navigate("/assess");
   };
 
-  // One honest sentence per result axis.
+  // One honest sentence per result axis, in plain language.
   const resultSentence = () => {
     if (!scenario.assumeCapture) {
-      return "Capture is not assumed, so the illustrated harvesting path is not being modeled. This is a scope choice, not evidence that nothing was recorded.";
+      return "Recording is switched off in this example, so nothing is shown as recorded. That is a choice about the example, not evidence that nobody is recording.";
     }
     if (!result.hasAssumedAttack) {
-      return `At ${formatMonth(viewMonth)}, ${result.cohorts.filter((c) => c.recorded).length} illustrative cohorts are recorded. No attack is assumed within this horizon, so there is no overlap result and no planning margin. That is a bounded assumption, not evidence of safety.`;
+      const recordedCount = result.cohorts.filter((c) => c.recorded).length;
+      return `At ${formatMonth(viewMonth)}, ${recordedCount} ${recordedCount === 1 ? "copy has" : "copies have"} been recorded so far. You have not assumed an attack within this horizon, so there is no attack date to compare against. That is a limit of the example, not evidence that the copies are safe.`;
     }
     const qLabel =
       scenario.attackAssumption.kind === "assumed" ? formatMonth(scenario.attackAssumption.month) : "";
     if (result.planningMargin.kind === "known" && result.overlapCount === 0 && result.overlapUnknownCount === 0) {
-      return `At ${formatMonth(viewMonth)}, no illustrative cohort falls inside the overlap at ${qLabel} under these assumptions. This follows from the chosen inputs; it is not a general safety finding.`;
+      return `At ${formatMonth(viewMonth)}, no example item is both sent before the migration and still required to stay secret at ${qLabel}. Under your assumptions, nothing is exposed. That follows from the inputs you chose; it is not a general safety finding.`;
     }
+    const count = result.overlapCount;
+    const countPart =
+      count === 1
+        ? `At ${formatMonth(viewMonth)}, 1 example item sent before the migration must still stay secret when the assumed attack arrives in ${qLabel}. Its only protection is the pre-migration kind, which the attack is assumed to break.`
+        : `At ${formatMonth(viewMonth)}, ${count} example items sent before the migration must still stay secret when the assumed attack arrives in ${qLabel}. Their only protection is the pre-migration kind, which the attack is assumed to break.`;
     const unknownPart =
       result.overlapUnknownCount > 0
-        ? ` ${result.overlapUnknownCount} cannot be counted because an input is unknown.`
+        ? ` ${result.overlapUnknownCount} more ${result.overlapUnknownCount === 1 ? "item cannot" : "items cannot"} be counted because an input is unknown.`
         : "";
-    const marginPart =
-      result.planningMargin.kind === "known"
-        ? ` The planning margin (Z - X - Y) is ${result.planningMargin.value} months under these assumptions; a negative number shows overlap, a positive one is not a safety finding.`
-        : "";
-    return `At ${formatMonth(viewMonth)}, ${result.overlapCount} illustrative cohort${result.overlapCount === 1 ? "" : "s"} transmitted before the cutover fall inside the overlap at ${qLabel}.${unknownPart}${marginPart} Migration protects later transmissions; it does not change copies already recorded.`;
+    let marginPart = "";
+    if (result.planningMargin.kind === "known") {
+      const lifetime =
+        scenario.confidentialityLifetimeMonths.kind === "known"
+          ? scenario.confidentialityLifetimeMonths.value
+          : 0;
+      const deadline = formatMonth(result.cutoverMonth + lifetime);
+      const gap = Math.abs(result.planningMargin.value);
+      marginPart =
+        result.planningMargin.value < 0
+          ? ` An item sent at the last moment before the migration finished must stay secret until ${deadline}; the assumed attack date, ${qLabel}, is ${gap} months earlier.`
+          : ` An item sent at the last moment before the migration finished must stay secret until ${deadline}; the assumed attack date, ${qLabel}, is ${gap} months later.`;
+    }
+    return `${countPart}${unknownPart}${marginPart} Migration protects later transmissions; it does not change copies already recorded.`;
   };
 
   const checkId = "migration-history";
@@ -143,10 +158,10 @@ export default function Understand() {
           Recorded copies keep their original protection
         </h1>
         <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-          <strong className="font-semibold text-foreground">Illustrative scenario.</strong> Capture of
-          the example path is assumed, never observed. Each bar below is one cohort: a single
-          illustrative item, sent in a known month and recorded with the protection it had at
-          transmission. You control the assumptions; the model shows what would follow from them.
+          <strong className="font-semibold text-foreground">This is a teaching example.</strong> Someone
+          recording everything on this path is assumed, never observed. Each bar below is one item:
+          sent in a known month, and recorded with the protection it had that month. You set the
+          assumptions; the page shows what would follow from them.
         </p>
       </header>
 
@@ -236,7 +251,7 @@ export default function Understand() {
           {/* Model limits */}
           <details className="rounded-lg border border-border bg-white p-4">
             <summary className="cursor-pointer text-sm font-semibold">
-              What this model leaves out (technical note)
+              What this example does not cover
             </summary>
             <div className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
               <p>

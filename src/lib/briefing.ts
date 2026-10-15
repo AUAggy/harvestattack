@@ -60,12 +60,12 @@ const SCOPE_STATEMENT =
 function scenarioAttackLabel(state: SessionState): string {
   const a = state.scenario.attackAssumption;
   if (a.kind === "assumed") {
-    return `Hypothetical assumption: an attacker could attack the classical operation from month ${a.month} (${formatMonth(a.month)}). This is a visitor assumption, not a forecast.`;
+    return `Hypothetical: from ${formatMonth(a.month)} (month ${a.month}), an attacker can break the pre-migration protection. You chose this date; the site does not predict it.`;
   }
   if (a.kind === "none-within-horizon") {
-    return "No attack assumed within the model horizon. This is a bounded assumption, not evidence of safety.";
+    return "No attack date was assumed within the horizon. That is a limit of the example, not evidence of safety.";
   }
-  return "No capability assumption chosen; overlap results are unknown.";
+  return "No attack date chosen; exposure results are unknown.";
 }
 
 function assetToRecord(asset: WorksheetAsset, selection: ExportSelection): Record<string, unknown> {
@@ -156,8 +156,8 @@ export function buildSnapshot(state: SessionState, selection: ExportSelection, g
     scenario = {
       referenceMonth: formatMonth(0),
       captureAssumption: state.scenario.assumeCapture
-        ? "Capture of the illustrated path is assumed for the example, as an educational assumption."
-        : "Capture is not assumed, so the illustrated harvest path is not being modeled.",
+        ? "For this example we assume someone recorded everything on the path. It is a teaching assumption; nothing was observed."
+        : "Recording is switched off in this example; the page shows no recorded copies.",
       cutoverMonth: result.cutoverMonth,
       cutoverLabel: formatMonth(result.cutoverMonth),
       lifetimeMonths: lifetime,
@@ -165,14 +165,14 @@ export function buildSnapshot(state: SessionState, selection: ExportSelection, g
       planningMargin: result.planningMargin.kind === "known" ? result.planningMargin.value : "unknown",
       cohortExplanation:
         result.overlapCount > 0
-          ? `Under the assumptions above, ${result.overlapCount} illustrative cohort${result.overlapCount === 1 ? "" : "s"} transmitted before cutover fall inside the overlap at the assumed capability month. Migration protects later transmissions; it does not change those already recorded.`
+          ? `Under the assumptions above, ${result.overlapCount} example ${result.overlapCount === 1 ? "item" : "items"} sent before the migration must still stay secret when the assumed attack arrives. Their only protection is the pre-migration kind, which the attack is assumed to break. Migration protects later transmissions; it does not change copies already recorded.`
           : result.overlapUnknownCount > 0
-            ? `Overlap cannot be counted because some inputs are unknown (${result.overlapUnknownCount} illustrative cohorts). Collecting those inputs is the next evidence step.`
-            : "Under the assumptions above, no illustrative cohort falls inside the overlap at the assumed capability month. This follows from the chosen inputs; it is not a general safety finding.",
+            ? `Whether some example items are exposed cannot be counted because an input is unknown (${result.overlapUnknownCount} items). Collecting that input is the next evidence step.`
+            : "Under the assumptions above, no example item is both sent before the migration and still required to stay secret at the assumed attack date. This follows from the chosen inputs; it is not a general safety finding.",
       limits: [
-        "The model illustrates one simplified path with illustrative cohorts, not measured traffic.",
-        "The capability month is a hypothetical assumption. No arrival date is predicted.",
-        "Overlap describes eligibility for the assumed attack, not confirmed decryption.",
+        "The model shows one simplified path with example items, not measured traffic.",
+        "The attack date is a hypothetical assumption. No arrival date is predicted.",
+        "Exposed describes eligibility for the assumed attack, not confirmed decryption.",
         "Records outside the horizon, endpoint compromise, and active attacks are outside this model.",
       ],
     };

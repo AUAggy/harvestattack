@@ -36,7 +36,7 @@ function Harness({ page }: { page: Page }) {
 }
 
 function firstLedgerRow() {
-  const table = screen.getByRole("region", { name: "Cohort ledger table" });
+  const table = screen.getByRole("region", { name: "Item-by-item table" });
   return within(table).getAllByRole("row")[1];
 }
 
