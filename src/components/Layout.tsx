@@ -21,7 +21,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
           className={({ isActive }) =>
             `block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
               isActive
-                ? "bg-primary/10 text-primary"
+                ? "bg-primary/10 text-link"
                 : "text-muted-foreground hover:bg-secondary hover:text-foreground"
             }`
           }
@@ -58,7 +58,7 @@ export default function Layout() {
         <div className="container flex h-14 items-center justify-between px-4 sm:px-6">
           <Link to="/" className="flex items-center gap-2" aria-label="HarvestAttack home">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-              <Zap className="h-4 w-4 text-primary" aria-hidden="true" />
+              <Zap className="h-4 w-4 text-link" aria-hidden="true" />
             </div>
             <span className="text-sm font-semibold text-foreground">HarvestAttack</span>
           </Link>

@@ -24,8 +24,9 @@ const App = () => (
           <Route path="/share" element={<Share />} />
           <Route path="/sources" element={<Sources />} />
           <Route path="/updates" element={<Updates />} />
+          {/* Rendered inside the layout so the not-found page keeps the nav, footer and main landmark. */}
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </SessionProvider>

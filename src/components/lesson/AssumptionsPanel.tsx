@@ -46,7 +46,7 @@ function NumberField({
           value={value}
           aria-describedby={help ? `${id}-help` : undefined}
           onChange={(event) => onChange(Number(event.target.value))}
-          className="h-2 w-full cursor-pointer appearance-none rounded-full bg-surface-3 accent-primary"
+          className="h-2 w-full cursor-pointer appearance-none rounded-full bg-surface-3 accent-link"
         />
         <span className="flex items-center gap-1">
           <input

@@ -153,7 +153,7 @@ export default function Understand() {
   return (
     <div className="container px-4 py-8 sm:px-6">
       <header className="max-w-[72ch]">
-        <p className="text-sm font-medium uppercase tracking-wide text-primary">Lesson</p>
+        <p className="text-sm font-medium uppercase tracking-wide text-link">Lesson</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">
           Recorded copies keep their original protection
         </h1>
@@ -207,7 +207,7 @@ export default function Understand() {
                     setPlaying(false);
                     setViewMonth(Number(event.target.value));
                   }}
-                  className="h-2 min-w-0 max-w-[10rem] flex-1 cursor-pointer appearance-none rounded-full bg-surface-3 accent-primary"
+                  className="h-2 min-w-0 max-w-[10rem] flex-1 cursor-pointer appearance-none rounded-full bg-surface-3 accent-link"
                 />
                 <input
                   id="view-month-number"

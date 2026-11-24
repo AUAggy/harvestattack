@@ -77,7 +77,7 @@ export default function Home() {
       {/* Asymmetric editorial opening */}
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,33rem)] lg:gap-14">
         <header className="max-w-[68ch]">
-          <p className="text-sm font-medium uppercase tracking-wide text-primary">
+          <p className="text-sm font-medium uppercase tracking-wide text-link">
             Harvest now, decrypt later
           </p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">

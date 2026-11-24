@@ -297,6 +297,7 @@ function RowRemoveButton({ onClick, label }: { onClick: () => void; label: strin
       type="button"
       onClick={onClick}
       aria-label={label}
+      title={label}
       className="rounded-md border border-border bg-white px-3 py-1.5 text-xs font-medium text-muted-foreground hover:bg-secondary"
     >
       Remove row
@@ -558,7 +559,7 @@ function EvidenceRows({
               />
               <RowRemoveButton
                 onClick={() => setRows(asset.evidence.filter((r) => r.localId !== row.localId))}
-                label={`Remove evidence row for ${row.subject || "unnamed subject"}`}
+                label={`Remove row: evidence for ${row.subject || "unnamed subject"}`}
               />
             </li>
           ))}
@@ -955,7 +956,7 @@ function ComponentRows({
               />
               <RowRemoveButton
                 onClick={() => setRows(review.components.filter((r) => r.localId !== row.localId))}
-                label={`Remove component ${row.name || PKI_ROLE_LABELS[row.role]}`}
+                label={`Remove row: component ${row.name || PKI_ROLE_LABELS[row.role]}`}
               />
             </li>
           ))}
@@ -1110,7 +1111,7 @@ function RequirementRows({
                 />
                 <RowRemoveButton
                   onClick={() => setRows(review.requirements.filter((r) => r.localId !== row.localId))}
-                  label={`Remove requirement ${row.authority || "unnamed"}`}
+                  label={`Remove row: requirement ${row.authority || "unnamed"}`}
                 />
               </li>
             );
@@ -1406,7 +1407,7 @@ export default function Assess() {
   return (
     <div className="container px-4 py-8 sm:px-6">
       <header className="max-w-[72ch]">
-        <p className="text-sm font-medium uppercase tracking-wide text-primary">Worksheet</p>
+        <p className="text-sm font-medium uppercase tracking-wide text-link">Worksheet</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">
           Record what you know, and what you do not
         </h1>

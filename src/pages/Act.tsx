@@ -83,6 +83,7 @@ function ArtifactBlock({ label, text }: { label: string; text: string }) {
     <div className="mt-4">
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
       <pre
+        role="group"
         aria-label={label}
         className="mt-2 max-w-full select-text overflow-x-auto rounded-md bg-surface-2 p-3 font-mono text-xs leading-relaxed"
       >
@@ -236,7 +237,7 @@ export default function Act() {
   return (
     <div className="container px-4 py-8 sm:px-6">
       <header className="max-w-[72ch]">
-        <p className="text-sm font-medium uppercase tracking-wide text-primary">Actions</p>
+        <p className="text-sm font-medium uppercase tracking-wide text-link">Actions</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">Exercises and next steps</h1>
         <p className="mt-3 text-base leading-relaxed text-muted-foreground">
           Four short exercises, a copyable vendor question list, and a deployment decision
@@ -777,6 +778,7 @@ export default function Act() {
           </p>
 
           <pre
+            role="group"
             aria-label="Vendor question list, selectable text"
             className="mt-4 select-text whitespace-pre-wrap rounded-md bg-surface-2 p-4 font-sans text-sm leading-relaxed"
           >

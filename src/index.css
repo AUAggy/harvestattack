@@ -31,7 +31,8 @@
     --popover-foreground: 231 25% 16%;
 
     --primary: 28 80% 52%;
-    --primary-foreground: 0 0% 100%;
+    /* Dark ink on the orange fill: white on #e67e22 is 2.8:1, below WCAG AA; ink is 5.9:1. */
+    --primary-foreground: 231 25% 16%;
 
     --secondary: 40 15% 93%;
     --secondary-foreground: 231 25% 16%;
@@ -46,13 +47,14 @@
     --destructive-foreground: 0 0% 100%;
 
     /* Semantic states: assumption/attention, unknown, and a cool distinct pattern color */
-    --caution: 36 90% 44%;
+    /* Darker amber so caution labels pass AA on white (5.2:1); the bright amber was 2.9:1. */
+    --caution: 35 92% 32%;
     --caution-foreground: 0 0% 100%;
     --unknown: 215 15% 50%;
     --cool: 200 45% 32%;
     --cool-foreground: 0 0% 100%;
 
-    /* Darker orange for small links and filled controls (contrast-checked candidate) */
+    /* Darker orange for small accent text and filled controls (5.8:1 on white). */
     --link: 24 88% 35%;
 
     --border: 0 0% 0% / 0.1;

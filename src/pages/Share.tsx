@@ -53,7 +53,7 @@ const SECONDARY_BUTTON =
   "rounded-md border border-border bg-white px-4 py-2 text-sm font-medium hover:bg-secondary disabled:cursor-not-allowed disabled:opacity-40";
 const TAB_ACTIVE = "rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground";
 const TAB_IDLE = "rounded-md border border-border bg-white px-3 py-1.5 text-sm font-medium hover:bg-secondary";
-const LINK_CLASS = "font-medium text-primary underline underline-offset-2 hover:text-primary/90";
+const LINK_CLASS = "font-medium text-link underline underline-offset-2 hover:text-link/90";
 
 /** Stable fingerprint of everything the snapshot depends on. */
 function fingerprintOf(selection: ExportSelection, state: SessionState): string {
@@ -182,7 +182,7 @@ export default function Share() {
   return (
     <div className="container px-4 py-8 sm:px-6">
       <header className="max-w-[72ch]">
-        <p className="text-sm font-medium uppercase tracking-wide text-primary">Briefing</p>
+        <p className="text-sm font-medium uppercase tracking-wide text-link">Briefing</p>
         <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">
           A brief you generate from your own selections
         </h1>
@@ -434,6 +434,9 @@ export default function Share() {
                   ))}
                 </div>
                 <pre
+                  tabIndex={0}
+                  role="group"
+                  aria-label="Generated brief preview"
                   className={`mt-4 max-h-[40rem] overflow-auto whitespace-pre-wrap break-words rounded-md border border-border bg-white p-4 leading-relaxed sm:p-6 print:max-h-none print:overflow-visible print:border-0 print:p-0 ${
                     format === "json" ? "font-mono text-sm" : "font-sans text-base"
                   }`}
