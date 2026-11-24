@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Coding-agent planning file; not part of the published project
+AGENTS.md
+
+# Cloudflare Wrangler local state (created on every deploy from this folder)
+.wrangler/
