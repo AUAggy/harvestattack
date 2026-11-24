@@ -4,7 +4,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useEffect, useState, type ReactNode } from "react";
 import { MemoryRouter } from "react-router-dom";
 import Share from "@/pages/Share";
-import { emptyFlow, SessionProvider, useSession } from "@/state/session";
+import { emptyFlow, useSession } from "@/state/session";
+import { SessionProvider } from "@/state/SessionProvider";
 
 const FLOW_LABEL = "Backup sync to cold storage";
 const FLOW_OWNER = "Platform Team";

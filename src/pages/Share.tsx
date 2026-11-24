@@ -1,5 +1,5 @@
 /**
- * Briefing page (rebuild plan sections 8.3 "Briefing" and 9.4).
+ * Briefing page.
  *
  * A document preview, not a decorative sharing card. Selection and redaction
  * come before generation, the preview invalidates when the underlying session

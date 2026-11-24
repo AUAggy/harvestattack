@@ -53,7 +53,7 @@ Vite, React 18, TypeScript, Tailwind, and React Router 6. Pages are plain HTML w
 
 - `src/domain/model.ts` is the lesson's model: pure and deterministic, with no UI, browser APIs, randomness, or clock. A cohort is one illustrative item transmitted in a given month, and its protection is fixed at transmission, so a migration never changes an older cohort. The month when an attacker could break the old protection is an input, never a forecast. `fixtures.ts` is the regression contract for the model.
 - `src/content/` holds the claim registry (`claims.ts`) and the source registry (`sources.ts`).
-- `src/state/session.tsx` is one in-memory session shared by every route. It writes to `localStorage` only when the visitor opts in.
+- `src/state/` is one in-memory session shared by every route: the state and reducer in `session.tsx`, the provider in `SessionProvider.tsx`. It writes to `localStorage` only when the visitor opts in.
 - `src/lib/` holds the worksheet types and suggestion rules (`contracts.ts`), the briefing snapshot and its formatters (`briefing.ts`), and clipboard and download helpers that report a failure to the visitor (`browser.ts`).
 - `src/pages/` and `src/components/` hold the routes and the lesson parts.
 

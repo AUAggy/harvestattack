@@ -4,7 +4,7 @@
  * statement, its sources, and its review record. Teaching prose refers to
  * claims by ID; exports and the sources page render from the same registry.
  *
- * Rules (rebuild plan §7.5-7.6):
+ * Rules:
  * - Statements are narrowly scoped. A claim never asserts more than its source
  *   supports.
  * - "Reviewed" means a maintainer re-opened the primary source on the checked

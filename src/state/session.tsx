@@ -1,12 +1,14 @@
 /**
- * Shared learning and worksheet session (rebuild plan §5.5).
+ * Shared learning and worksheet session: state shape, reducer, context,
+ * hook, and record factories.
  *
- * One in-memory provider with reducer-based updates preserves lesson and
+ * One in-memory session with reducer-based updates preserves lesson and
  * worksheet data across the established routes. Nothing is persisted unless
- * the visitor explicitly enables saving on this device. Browser storage access
- * lives in a small adapter, not in components.
+ * the visitor explicitly enables saving on this device. The provider that
+ * owns the session, and the browser storage adapter it uses, live in
+ * SessionProvider.tsx so that this module exports no components.
  */
-import { createContext, useContext, useEffect, useMemo, useReducer, type ReactNode } from "react";
+import { createContext, useContext } from "react";
 import {
   SCENARIO_BOUNDS,
   known,
@@ -63,7 +65,7 @@ export type SessionAction =
   | { type: "hydrate"; state: SessionState }
   | { type: "clear-all-local-work" };
 
-const initialState: SessionState = {
+export const initialState: SessionState = {
   scenario: DEFAULT_SCENARIO,
   comprehension: {},
   flows: [],
@@ -119,60 +121,13 @@ export function sessionReducer(state: SessionState, action: SessionAction): Sess
   }
 }
 
-const SESSION_STORAGE_KEY = "harvestattack-session-v1";
-
-function loadSavedState(): SessionState | null {
-  try {
-    const raw = window.localStorage.getItem(SESSION_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as SessionState;
-    // Minimal shape validation. An incompatible record is ignored, not reinterpreted.
-    if (
-      parsed &&
-      typeof parsed === "object" &&
-      Array.isArray(parsed.flows) &&
-      Array.isArray(parsed.signingAssets) &&
-      Array.isArray(parsed.pkiReviews) &&
-      Array.isArray(parsed.actions) &&
-      parsed.scenario
-    ) {
-      return { ...initialState, ...parsed, saveOnThisDevice: true };
-    }
-    return null;
-  } catch {
-    return null;
-  }
-}
-
-function persistState(state: SessionState): void {
-  try {
-    if (state.saveOnThisDevice) {
-      window.localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(state));
-    } else {
-      window.localStorage.removeItem(SESSION_STORAGE_KEY);
-    }
-  } catch {
-    // Storage denial must not block the session. Saving stays unavailable.
-  }
-}
-
-interface SessionContextValue {
+export interface SessionContextValue {
   state: SessionState;
   dispatch: (action: SessionAction) => void;
 }
 
-const SessionContext = createContext<SessionContextValue | null>(null);
-
-export function SessionProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(sessionReducer, initialState, (init) => loadSavedState() ?? init);
-
-  useEffect(() => {
-    persistState(state);
-  }, [state]);
-
-  const value = useMemo(() => ({ state, dispatch }), [state]);
-  return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
-}
+/** Shared by the provider in SessionProvider.tsx and the hook below. */
+export const SessionContext = createContext<SessionContextValue | null>(null);
 
 export function useSession(): SessionContextValue {
   const ctx = useContext(SessionContext);

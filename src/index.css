@@ -20,7 +20,7 @@
 
 @layer base {
   :root {
-    /* Warm light editorial theme (rebuild plan §8.2) */
+    /* Warm light editorial theme */
     --background: 40 20% 97%;
     --foreground: 231 25% 16%;
 

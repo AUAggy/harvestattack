@@ -3,8 +3,8 @@ import { ClaimRef } from "@/components/ClaimRef";
 
 /**
  * Concepts (/learn). A single-column article with a local table of contents.
- * Plan §8.3: lead with the protection stack, then forward secrecy and
- * hybrids, then signature verifiers, then an anchored private-PKI primer,
+ * Lead with the protection stack, then forward secrecy and hybrids, then
+ * signature verifiers, then an anchored private-PKI primer,
  * and a glossary. Volatile or external statements cite the claim registry
  * inline so the review status is one click away.
  */

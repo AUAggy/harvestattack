@@ -1,7 +1,7 @@
 /**
- * Worksheet, evidence, and private-PKI review contracts (rebuild plan §5.4,
- * §9.1, §9.5). These types are shared by the worksheet, actions, briefing,
- * and export code. Unknown is explicit everywhere; there is no aggregate
+ * Worksheet, evidence, and private-PKI review contracts. These types are
+ * shared by the worksheet, actions, briefing, and export code. Unknown is
+ * explicit everywhere; there is no aggregate
  * score, no risk rating, and no compliance verdict in this file or any
  * consumer of it.
  */

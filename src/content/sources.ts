@@ -1,7 +1,7 @@
 /**
  * Maintained primary-source registry. Sources are review inputs: a link here
  * is not a claim that a page was re-read today; each claim carries its own
- * checked date. See the rebuild plan §7.3 and §7.5.
+ * checked date.
  */
 
 export type SourceType =

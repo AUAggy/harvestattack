@@ -1,5 +1,5 @@
 /**
- * Fixed model fixtures from the rebuild plan §6.6. Every fixture uses month
+ * Fixed model fixtures for the domain model. Every fixture uses month
  * offsets so it stays valid regardless of calendar year. These are the
  * regression contract for the domain model.
  */

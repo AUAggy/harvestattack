@@ -1,5 +1,5 @@
 /**
- * Browser adapters (rebuild plan §5.3). These functions run only in event
+ * Browser adapters. These functions run only in event
  * handlers or effects, never during render. Clipboard success is reported only
  * after the write resolves; failures are returned, not swallowed.
  */

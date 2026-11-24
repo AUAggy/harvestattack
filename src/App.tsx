@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
-import { SessionProvider } from "./state/session";
+import { SessionProvider } from "./state/SessionProvider";
 import Home from "./pages/Home";
 import Understand from "./pages/Understand";
 import Learn from "./pages/Learn";

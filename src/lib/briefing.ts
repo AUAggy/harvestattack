@@ -1,5 +1,5 @@
 /**
- * Briefing export (rebuild plan §9.4, ADR A06).
+ * Briefing export.
  *
  * One pure snapshot builder feeds every output format. Browser adapters
  * (clipboard, download, mail) never author content. The snapshot contains only

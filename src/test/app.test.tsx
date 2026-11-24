@@ -5,7 +5,8 @@ import { useState } from "react";
 import { MemoryRouter } from "react-router-dom";
 import Understand from "@/pages/Understand";
 import Assess from "@/pages/Assess";
-import { SessionProvider, useSession } from "@/state/session";
+import { useSession } from "@/state/session";
+import { SessionProvider } from "@/state/SessionProvider";
 
 type Page = "understand" | "assess";
 

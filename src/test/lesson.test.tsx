@@ -4,7 +4,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import { deriveScenario, formatMonth } from "@/domain/model";
 import Understand from "@/pages/Understand";
-import { DEFAULT_SCENARIO, SessionProvider } from "@/state/session";
+import { DEFAULT_SCENARIO } from "@/state/session";
+import { SessionProvider } from "@/state/SessionProvider";
 
 function renderLesson() {
   return render(

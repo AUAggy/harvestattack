@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <div className="container px-4 py-10 sm:px-6 sm:py-14">
       {/* Asymmetric editorial opening */}
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-14">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,33rem)] lg:gap-14">
         <header className="max-w-[68ch]">
           <p className="text-sm font-medium uppercase tracking-wide text-primary">
             Harvest now, decrypt later
@@ -113,10 +113,10 @@ export default function Home() {
         {/* Static copied-stream figure. Hidden from assistive tech; the
             sentence below is the plain-text equivalent. */}
         <div className="lg:pt-4">
-          <div aria-hidden="true" className="w-full max-w-md">
+          <div aria-hidden="true" className="w-full max-w-[33rem]">
             <CohortTimeline scenario={DEFAULT_SCENARIO} result={figureResult} viewMonth={0} />
           </div>
-          <p className="mt-2 max-w-md text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-2 max-w-[33rem] text-xs leading-relaxed text-muted-foreground">
             One example stream from the lesson, copied every six months, switching from classical to
             hybrid protection at the cutover.
           </p>

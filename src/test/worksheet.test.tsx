@@ -4,7 +4,8 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import type { ReactNode } from "react";
 import Assess from "@/pages/Assess";
-import { SessionProvider, useSession } from "@/state/session";
+import { useSession } from "@/state/session";
+import { SessionProvider } from "@/state/SessionProvider";
 
 /** Shows what the session actually recorded, so action creation is observable. */
 function ActionsProbe() {

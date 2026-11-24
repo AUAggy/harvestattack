@@ -1,5 +1,5 @@
 /**
- * Actions (/act) per rebuild plan §8.3 and §9.2-9.3. Four exercises with
+ * Actions (/act). Four exercises with
  * sanitized or synthetic sample data, a copyable vendor question list, and
  * the deployment decision framework. Correct answers produce an explanation
  * and an optional worksheet action; wrong answers are a chance to explain a

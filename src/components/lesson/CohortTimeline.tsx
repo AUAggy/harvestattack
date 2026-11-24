@@ -2,6 +2,14 @@ import { formatMonth, type ScenarioInputs, type ScenarioResult, type ThreeValue 
 
 const COL_WIDTH = 30;
 const BAR_HEIGHT = 56;
+/** Clear space above the bars for the two marker labels. */
+const LABEL_SPACE = 44;
+/** Fixed rows under the bars: 4px gap + 6px dot, then 2px gap + 14px year line. */
+const DOT_ROW = 10;
+const YEAR_ROW = 16;
+/** Every column is this tall, so bars and dots line up with or without a year label. */
+const ROWS_HEIGHT = BAR_HEIGHT + DOT_ROW + YEAR_ROW;
+const INNER_HEIGHT = LABEL_SPACE + ROWS_HEIGHT;
 
 interface CohortTimelineProps {
   scenario: ScenarioInputs;
@@ -29,7 +37,8 @@ function overlapClass(overlap: ThreeValue): OverlapClass {
  * The cohort timeline. Purely visual: the figure is hidden from assistive
  * technology and the cohort ledger beside it is the accessible equivalent.
  * Recorded cohorts keep their original protection pattern; amber marks the
- * scenario overlap, never a measured incident.
+ * scenario overlap, never a measured incident. Marker labels sit in clear
+ * space above the bars, and every column has the same fixed rows.
  */
 export function CohortTimeline({ scenario, result, viewMonth }: CohortTimelineProps) {
   const qMonth =
@@ -39,19 +48,15 @@ export function CohortTimeline({ scenario, result, viewMonth }: CohortTimelinePr
   return (
     <figure>
       <div className="rounded-lg border border-border bg-white p-4">
-        <div
-          aria-hidden="true"
-          className="relative max-w-full overflow-x-auto pb-2"
-          style={{ minHeight: BAR_HEIGHT + 40 }}
-        >
-          <div className="relative" style={{ width: result.cohorts.length * COL_WIDTH, height: BAR_HEIGHT + 20 }}>
+        <div aria-hidden="true" className="relative max-w-full overflow-x-auto pb-5">
+          <div className="relative" style={{ width: result.cohorts.length * COL_WIDTH, height: INNER_HEIGHT }}>
             {/* Cutover marker */}
             {result.cohorts.length > 0 && (
               <div
-                className="absolute top-0 bottom-6 z-10 border-l-2 border-dashed border-cool"
-                style={{ left: leftFor(result.cutoverMonth) }}
+                className="absolute top-0 z-10 border-l-2 border-dashed border-cool"
+                style={{ left: leftFor(result.cutoverMonth), height: LABEL_SPACE + BAR_HEIGHT }}
               >
-                <span className="absolute -top-1 left-1 whitespace-nowrap font-mono text-[10px] text-cool">
+                <span className="absolute left-1 top-0 whitespace-nowrap font-mono text-[10px] text-cool">
                   cutover {formatMonth(result.cutoverMonth)}
                 </span>
               </div>
@@ -59,24 +64,24 @@ export function CohortTimeline({ scenario, result, viewMonth }: CohortTimelinePr
             {/* Assumed capability marker */}
             {qMonth !== null && (
               <div
-                className="absolute top-0 bottom-6 z-10 border-l-2 border-dotted border-caution"
-                style={{ left: leftFor(qMonth) }}
+                className="absolute top-0 z-10 border-l-2 border-dotted border-caution"
+                style={{ left: leftFor(qMonth), height: LABEL_SPACE + BAR_HEIGHT }}
               >
-                <span className="absolute top-5 left-1 whitespace-nowrap font-mono text-[10px] text-caution">
+                <span className="absolute left-1 top-5 whitespace-nowrap font-mono text-[10px] text-caution">
                   assumed capability {formatMonth(qMonth)}
                 </span>
               </div>
             )}
             {/* Cohort bars */}
-            <div className="absolute inset-x-0 top-7 flex items-end" style={{ height: BAR_HEIGHT }}>
-              {result.cohorts.map(({ cohort, recorded, preArrivalOverlap }) => {
+            <div className="absolute inset-x-0 flex items-start" style={{ top: LABEL_SPACE }}>
+              {result.cohorts.map(({ cohort, recorded, preArrivalOverlap }, index) => {
                 const overlap = overlapClass(preArrivalOverlap);
                 const transmitted = cohort.transmittedMonth <= viewMonth;
                 return (
                   <div
                     key={cohort.id}
                     className="flex flex-col items-center justify-end px-[2px]"
-                    style={{ width: COL_WIDTH }}
+                    style={{ width: COL_WIDTH, height: ROWS_HEIGHT }}
                   >
                     <div
                       title={`${formatMonth(cohort.transmittedMonth)}: ${cohort.protection}, ${recorded ? "recorded" : "not yet transmitted"}, ${overlap.label}`}
@@ -90,11 +95,16 @@ export function CohortTimeline({ scenario, result, viewMonth }: CohortTimelinePr
                         recorded ? "bg-foreground" : "bg-transparent"
                       }`}
                     />
-                    {(cohort.transmittedMonth % 12 === 0 || cohort.transmittedMonth === 0) && (
-                      <span className="mt-0.5 font-mono text-[9px] text-muted-foreground">
-                        {formatMonth(cohort.transmittedMonth).replace(" 20", " '")}
-                      </span>
-                    )}
+                    {/* A year label is wider than its column. Start the first one at the edge so the scroller does not clip it. */}
+                    <span
+                      className={`mt-0.5 h-[14px] whitespace-nowrap font-mono text-[9px] leading-[14px] text-muted-foreground ${
+                        index === 0 ? "self-start" : ""
+                      }`}
+                    >
+                      {cohort.transmittedMonth % 12 === 0 || cohort.transmittedMonth === 0
+                        ? formatMonth(cohort.transmittedMonth).replace(" 20", " '")
+                        : ""}
+                    </span>
                   </div>
                 );
               })}
