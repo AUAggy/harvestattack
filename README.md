@@ -90,3 +90,7 @@ Wrangler asks for a Cloudflare login the first time it runs.
 ## Reporting an error
 
 Include the claim ID from the `/sources` page (for example `claim-fips-203-final`) so the correction can be traced to its record. Do not send private keys, certificates, or internal hostnames.
+
+## License
+
+MIT. See [LICENSE](LICENSE). This covers the site's code and its written content.
