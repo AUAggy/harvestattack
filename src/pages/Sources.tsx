@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import {
+  CONTENT_DATE,
   claims,
   isActiveClaim,
   isReviewOverdue,
   type Claim,
 } from "@/content/claims";
 import { getSource, type Source, type SourceType } from "@/content/sources";
-
-const TODAY = "2026-10-15"; // Content release date; claim freshness is relative to the registry.
 
 const PURPOSE_ORDER: Claim["purpose"][] = [
   "general",
@@ -45,7 +44,7 @@ const groups = PURPOSE_ORDER.map((purpose) => ({
 })).filter((group) => group.items.length > 0);
 
 function ReviewBadge({ claim }: { claim: Claim }) {
-  if (isReviewOverdue(claim, TODAY)) {
+  if (isReviewOverdue(claim, CONTENT_DATE)) {
     return (
       <span className="inline-block rounded border border-caution/50 bg-caution/10 px-2 py-0.5 text-xs font-medium text-caution">
         Review overdue; last checked {claim.reviewedDate}

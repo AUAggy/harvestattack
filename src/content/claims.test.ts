@@ -1,10 +1,35 @@
 import { describe, expect, it } from "vitest";
-import { claims, getClaim, isActiveClaim, isReviewOverdue, validateClaims } from "./claims";
-import { getSource } from "./sources";
+import {
+  CONTENT_DATE,
+  claims,
+  getClaim,
+  isActiveClaim,
+  isReviewOverdue,
+  validateClaims,
+} from "./claims";
+import { getSource, sources } from "./sources";
 
 describe("claim registry", () => {
   it("passes structural validation", () => {
     expect(validateClaims()).toEqual([]);
+  });
+
+  it("release gate: no active claim is overdue as of the content date", () => {
+    const overdue = Object.values(claims)
+      .filter((claim) => isActiveClaim(claim))
+      .filter((claim) => isReviewOverdue(claim, CONTENT_DATE))
+      .map((claim) => `${claim.id} (review due ${claim.reviewDueDate})`);
+    expect(overdue).toEqual([]);
+  });
+
+  it("release gate: nothing was checked after the content date", () => {
+    const laterClaims = Object.values(claims)
+      .filter((claim) => claim.reviewedDate > CONTENT_DATE)
+      .map((claim) => `${claim.id} (checked ${claim.reviewedDate})`);
+    const laterSources = Object.values(sources)
+      .filter((source) => source.checkedDate > CONTENT_DATE)
+      .map((source) => `${source.id} (checked ${source.checkedDate})`);
+    expect([...laterClaims, ...laterSources]).toEqual([]);
   });
 
   it("resolves every source reference", () => {

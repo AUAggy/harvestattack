@@ -68,7 +68,7 @@ Every volatile statement on the site is a claim in `src/content/claims.ts` with 
 - Render claims with `<ClaimRef id="..." />`. It links to the record on `/sources` and flags an overdue review.
 - "Reviewed" means a maintainer opened the primary source on that date. An overdue review is flagged; it does not make the claim false.
 - When a claim changes, raise its revision. When one is wrong, mark it withdrawn or superseded and record the correction on `/updates`. Do not rewrite it quietly.
-- Overdue status is measured against the `TODAY` constant in `Sources.tsx` and `ClaimRef.tsx`. Update it at each content release.
+- Overdue status is measured against `CONTENT_DATE` in `src/content/claims.ts`. Move it forward at each content release. The registry tests fail if an active claim is overdue as of that date, or if anything was checked after it, so a release cannot ship with a lapsed review.
 - `src/content/claims.test.ts` checks the registry and pins the scoping rules, such as reading missing telemetry as unknown.
 
 The copy is plain prose a curious 15-year-old can follow, with no em-dashes and no hype vocabulary. Show what is at stake with a concrete mechanism instead of calling it important.

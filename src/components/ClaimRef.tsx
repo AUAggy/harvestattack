@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { getClaim, isActiveClaim, isReviewOverdue } from "@/content/claims";
-
-const TODAY = "2026-10-15"; // Content release date; claim freshness is relative to the registry.
+import { CONTENT_DATE, getClaim, isActiveClaim, isReviewOverdue } from "@/content/claims";
 
 /**
  * Inline citation for a registered claim. Links to the claim's record on the
@@ -19,7 +17,7 @@ export function ClaimRef({ id, label }: { id: string; label?: string }) {
   if (!isActiveClaim(claim)) {
     return <span className="text-muted-foreground">[withdrawn claim: {id}]</span>;
   }
-  const overdue = isReviewOverdue(claim, TODAY);
+  const overdue = isReviewOverdue(claim, CONTENT_DATE);
   const description = overdue
     ? `Review overdue; last checked ${claim.reviewedDate}`
     : `Source checked ${claim.reviewedDate}`;

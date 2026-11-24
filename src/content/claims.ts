@@ -44,6 +44,15 @@ export interface Claim {
   withdrawn?: boolean;
 }
 
+/**
+ * The date the site's freshness labels are measured against: the content
+ * release date. Move it forward at each content release, after re-reviewing
+ * every claim that has come due. The registry tests fail if an active claim
+ * is overdue as of this date, or if anything was checked after it, so a
+ * release cannot ship with a lapsed review.
+ */
+export const CONTENT_DATE = "2026-10-15";
+
 /** Quarterly starting cadence per the freshness policy. */
 const nextQuarter = "2027-01-15";
 
